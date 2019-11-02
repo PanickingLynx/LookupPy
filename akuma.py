@@ -1,10 +1,10 @@
-import requests
-import pymongo
 import json
 import re
-from bs4 import BeautifulSoup
 import sys
-from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
+import requests
+import pymongo
+from bs4 import BeautifulSoup
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from ui import Ui_QMainWindow
 
 class AppWindow(QMainWindow):
@@ -20,13 +20,13 @@ w = AppWindow()
 w.show()
 
 #Conect to Database and get modules
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient["AkumaPy"]
-mycol = mydb["links"]
+MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
+MyDB = MyClient["AkumaPy"]
+mycol = MyDB["links"]
 name = w.ui.usernameIn.displayText()
 nsfw = input("SAFE SEARCH ON? <y/n>: ")
 #Sample DB Search Criteria
-for field in mycol.find({},{'_id': 0 ,'name': 1 ,'link': 1 ,'type': 1}):
+for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
     json.dumps(field)
     wname = field["name"]
     wtype = field["type"]

@@ -1,5 +1,4 @@
 import pymongo
-import json
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["AkumaPy"]
@@ -10,8 +9,8 @@ def main():
     print("Please Insert the link you wanna add, make sure to add a WILDCARD into the link whereever the Username would be: ")
     link = input("Insert the link here: ")
     print("")
-    type = input("Is this a NSFW link? If yes, type a 1, if no type a 0: ")
-    print(name, type, link)
+    isNSFW = input("Is this a NSFW link? If yes, isNSFW a 1, if no isNSFW a 0: ")
+    print(name, isNSFW, link)
     if "http://" or "https://" not in link:
         print("INVALID URL, MISSING HTTP OR HTTPS!!!")
         input("PRESS ENTER TO RESET!")
@@ -20,17 +19,17 @@ def main():
         print("PLEASE PUT THE 'WILDCARD' STRING INTO A VALID PLACE IN THE LINK")
         input("PRESS ENTER TO RESET!")
         main()
-    if 1 or 0 not in type:
-        print("NO TYPE ASSIGNED! ENTER A 1 OR A 0")
+    if 1 or 0 not in isNSFW:
+        print("NO isNSFW ASSIGNED! ENTER A 1 OR A 0")
         input("PRESS ENTER TO RESET!")
         main()
-    if name or link or type == "":
+    if name or link or isNSFW == "":
         print("MISSING PARAMETER! PLEASE RETRY!")
         input("PRESS ENTER TO RESET!")
         main()
         
     print("Inserting....")
-    mydoc = { "name": name, "link": link, "type": type}
+    mydoc = { "name": name, "link": link, "isNSFW": isNSFW}
 
     mycol.insert_one(mydoc)
 

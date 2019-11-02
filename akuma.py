@@ -66,5 +66,6 @@ for field in mycol.find({},{'_id': 0 ,'name': 1 ,'link': 1 ,'type': 1}):
                 print("PROBABLY EXISTS!")
         else:
             print("EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?")
+            #Added some data
 
 sys.exit(app.exec_())

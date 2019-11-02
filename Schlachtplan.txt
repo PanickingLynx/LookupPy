@@ -1,0 +1,14 @@
+----Abschlussprojekt----
+
+1. RegEx für Namensvariationen [Christopher] !!!
+2. Seitensuche nach Text welcher impliziert dass die Seite fehlt [Joshi] !!! X
+3. Verschiedene Outputs [Christopher] !!
+4. Insert Script [Joshi] !! ^ X
+5. Datenbankpflege [Joshi] !
+6. Hauptmenü (ASCII Art) (Oder komplette GUI) [Extern / Sophie Fliegner] - ^
+7. Color prompt [Christopher] ! X
+8. (Installer / Libmig) [Joshi] ! ^
+
+
+C = !!!!!!
+J = !!!!!!!

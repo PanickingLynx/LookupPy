@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Projects\AkumaPy\akumapy.ui'
+# Form implementation generated from reading ui file 'akumapy.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.0
 #
@@ -31,6 +31,8 @@ class Ui_QMainWindow(object):
         self.textEdit.setObjectName("textEdit")
         self.usernameIn = QtWidgets.QLineEdit(self.centralwidget)
         self.usernameIn.setGeometry(QtCore.QRect(10, 390, 441, 20))
+        self.usernameIn.setInputMask("")
+        self.usernameIn.setText("")
         self.usernameIn.setObjectName("usernameIn")
         self.go = QtWidgets.QPushButton(self.centralwidget)
         self.go.setGeometry(QtCore.QRect(470, 390, 81, 23))
@@ -40,6 +42,9 @@ class Ui_QMainWindow(object):
         self.filePath.setInputMask("")
         self.filePath.setAlignment(QtCore.Qt.AlignCenter)
         self.filePath.setObjectName("filePath")
+        self.checkNSFWService = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkNSFWService.setGeometry(QtCore.QRect(470, 150, 51, 16))
+        self.checkNSFWService.setObjectName("checkNSFWService")
         QMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(QMainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 586, 21))
@@ -61,7 +66,17 @@ class Ui_QMainWindow(object):
         self.plainListRadio.setText(_translate("QMainWindow", "Simple Output"))
         self.textFileRadio.setText(_translate("QMainWindow", "To .txt file"))
         self.jsonFileRadio.setText(_translate("QMainWindow", "To .json file"))
-        self.usernameIn.setText(_translate("QMainWindow", "Input username here"))
         self.go.setText(_translate("QMainWindow", "Start the Hunt"))
         self.filePath.setText(_translate("QMainWindow", "Path to document"))
+        self.checkNSFWService.setText(_translate("QMainWindow", "NSFW"))
         self.menuInformation.setTitle(_translate("QMainWindow", "Information"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    QMainWindow = QtWidgets.QMainWindow()
+    ui = Ui_QMainWindow()
+    ui.setupUi(QMainWindow)
+    QMainWindow.show()
+    sys.exit(app.exec_())

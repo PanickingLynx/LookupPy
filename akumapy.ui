@@ -75,8 +75,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="inputMask">
+     <string/>
+    </property>
     <property name="text">
-     <string>Input username here</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="go">
@@ -109,6 +112,19 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkNSFWService">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>150</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>NSFW</string>
     </property>
    </widget>
   </widget>

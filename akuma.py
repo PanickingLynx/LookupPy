@@ -31,11 +31,12 @@ mycol = MyDB["links"]
 def hunt():
     output = ""
     name = w.ui.usernameIn.text()
+    pathToLog = w.ui.filePath.text()
     for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         json.dumps(field)
         wname = field["name"]
         wtype = field["type"]
-        if w.ui.checkNSFWService.isChecked() and wtype == 1:
+        if w.ui.checkNSFWService.isChecked() != True and wtype == 1:
             break
         else:
             carded = re.sub("WILDCARD", name, field["link"])
@@ -71,7 +72,14 @@ def hunt():
                     output = output + "PROBABLY EXISTS!\n"
             else:
                 output = output + "EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?\n"
+                
     w.ui.textEdit.setText(output)
+    if w.ui.textFileRadio.isChecked():
+        outFileText = open(pathToLog, "w")
+        outFileText.write(output)
+        outFileText.close()
+    
+
 
 w.ui.go.clicked.connect(lambda: hunt())
 w.show()

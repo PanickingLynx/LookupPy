@@ -29,6 +29,9 @@
     <property name="text">
      <string>Simple Output</string>
     </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QRadioButton" name="textFileRadio">
     <property name="geometry">
@@ -98,8 +101,8 @@
    <widget class="QLineEdit" name="filePath">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>110</y>
+      <x>460</x>
+      <y>170</y>
       <width>113</width>
       <height>20</height>
      </rect>
@@ -108,7 +111,7 @@
      <string/>
     </property>
     <property name="text">
-     <string>Path to document</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -118,13 +121,26 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>150</y>
+      <y>100</y>
       <width>51</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>NSFW</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelForPath">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>140</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Path to logfile (optional)</string>
     </property>
    </widget>
   </widget>

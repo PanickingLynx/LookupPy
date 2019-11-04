@@ -37,14 +37,14 @@ def hunt():
         wname = field["name"]
         wtype = field["type"]
         if w.ui.checkNSFWService.isChecked() != True and wtype == 1:
-            break
+            output = output + "--------------------\n"
+            output = output + "\nCENSORED\n"
         else:
             carded = re.sub("WILDCARD", name, field["link"])
             respaced = re.sub("\s", "_", carded)
             req = requests.get(respaced).status_code
             output = output + "--------------------\n"
-            output = output + wname + "\n"
-            output = output + ";\n"
+            output = output + "\n" + wname + "\n"
             output = output + respaced + "\n"
             #Check HTML Status Code first and list new Entry
             if req == 200:

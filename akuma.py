@@ -8,6 +8,7 @@ import pymongo
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from ui import Ui_QMainWindow
+import qdarkstyle
 
 class AppWindow(QMainWindow):
     def __init__(self):
@@ -18,6 +19,7 @@ class AppWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
+app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 w = AppWindow()
 
 

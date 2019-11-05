@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>586</width>
+    <width>631</width>
     <height>464</height>
    </rect>
   </property>
@@ -17,140 +17,90 @@
    <double>1.000000000000000</double>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QRadioButton" name="plainListRadio">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>10</y>
-      <width>91</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Simple Output</string>
-    </property>
-    <property name="checked">
-     <bool>true</bool>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="textFileRadio">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>40</y>
-      <width>82</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>To .txt file</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="jsonFileRadio">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>70</y>
-      <width>82</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>To .json file</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>441</width>
-      <height>371</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="usernameIn">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>390</y>
-      <width>441</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="go">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>390</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Start the Hunt</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="filePath">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>170</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkNSFWService">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>100</y>
-      <width>51</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>NSFW</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelForPath">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>140</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Path to logfile (optional)</string>
-    </property>
-   </widget>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QTextEdit" name="textEdit"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="labelForPath">
+      <property name="text">
+       <string>Path to logfile (optional)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="filePath">
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="plainListRadio">
+      <property name="text">
+       <string>Simple Output</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="textFileRadio">
+      <property name="text">
+       <string>To .txt file</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QRadioButton" name="jsonFileRadio">
+      <property name="text">
+       <string>To .json file</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="checkNSFWService">
+      <property name="text">
+       <string>NSFW</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="usernameIn">
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="go">
+      <property name="text">
+       <string>Start the Hunt</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>586</width>
-     <height>21</height>
+     <width>631</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInformation">

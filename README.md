@@ -19,7 +19,7 @@ It can ease tracking people just by recieving a username on one platform and hun
 
 ### Why was this created?
 
-AkumaPy was created for a final school project at the [BBS-Betzdorf-Kirchen Technical College](https://bbs-betzdorf-kirchen.de "School Homepage").
+AkumaPy was created for a final school project at the [BBS-Betzdorf-Kirchen Technical College](https://www.bbs-betzdorf-kirchen.de "School Homepage").
 It contains multiple areas of programming like Databases, GUI Design and Web-Developement.
 
 ### How does it work?

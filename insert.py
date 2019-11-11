@@ -35,5 +35,6 @@ def main():
 
     print("Done!")
     input("Press ENTER to exit the program!")
+    exit()
 
 main()

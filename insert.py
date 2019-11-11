@@ -9,7 +9,7 @@ def main():
     print("Please Insert the link you wanna add, make sure to add a WILDCARD into the link whereever the Username would be: ")
     link = input("Insert the link here: ")
     print("")
-    isNSFW = input("Is this a NSFW link? If yes, isNSFW a 1, if no isNSFW a 0: ")
+    isNSFW = input("Is this a NSFW link? If yes, put a 1, if no put a 0: ")
     print(name, isNSFW, link)
     if "http://" or "https://" not in link:
         print("INVALID URL, MISSING HTTP OR HTTPS!!!")

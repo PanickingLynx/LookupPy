@@ -40,7 +40,9 @@ The following text is example JSON for what a document would look like:
 ```
 
 name: The sites name
+
 link: The link syntax (WILDCARD is the placeholder for the username and will be switched automatically)
+
 type: Site type (0 = SFW / 1 = NSFW)
 
 After reading out the contents of each database entry, the site will send a HTTP Request to the corresponding link and get its status code.

@@ -19,7 +19,7 @@ It can ease tracking people just by recieving a username on one platform and hun
 
 ### Why was this created?
 
-AkumaPy was created for a final school project at the [BBS-Betzdorf-Kirchen Technical College](https://bbs-betzdorf-kirchen.de "School Homepage").
+AkumaPy was created for a final school project at the [BBS-Betzdorf-Kirchen Technical College](https://www.bbs-betzdorf-kirchen.de "School Homepage").
 It contains multiple areas of programming like Databases, GUI Design and Web-Developement.
 
 ### How does it work?
@@ -40,7 +40,9 @@ The following text is example JSON for what a document would look like:
 ```
 
 name: The sites name
+
 link: The link syntax (WILDCARD is the placeholder for the username and will be switched automatically)
+
 type: Site type (0 = SFW / 1 = NSFW)
 
 After reading out the contents of each database entry, the site will send a HTTP Request to the corresponding link and get its status code.
@@ -64,5 +66,5 @@ The user can choose to get a plain output, output to a .txt document or JSON for
 - JSON Output
 - Automatic name variation
 - Site html search to get a more specific output
-
-
+- Integrating database insertion into GUI
+- Adding credits to hotbar on the top of the GUI

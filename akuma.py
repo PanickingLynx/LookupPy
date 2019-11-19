@@ -64,11 +64,20 @@ def hunt():
             #Look for Data suspicious of a missing profile in the title
             page = requests.get(respaced)
             soup = BeautifulSoup(page.text, 'html.parser')
-            status = soup.find('title').extract()
+            status = soup.find('body').extract()
             status = status.text.lower()
             #Add entry
+
+            if w.ui.saveHTML.isChecked():
+                soup2 = BeautifulSoup(page.text, 'html.parser')
+                deeptext = w.ui.htmlTags.text()
+                htmltext = soup2.find(deeptext).extract()
+                htmlFile = open(w.ui.pathToHTML.text(), "w")
+                htmlFile.write(str(htmltext))
+                htmlFile.close()
+
             if status is not None:
-                if "not found" in status:
+                if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status:
                     output = output + "FAILED TO FIND!\n"
                 else:
                     output = output + "PROBABLY EXISTS!\n"

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'akumapy.ui'
+# Form implementation generated from reading ui file './akumapy.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -13,13 +13,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_QMainWindow(object):
     def setupUi(self, QMainWindow):
         QMainWindow.setObjectName("QMainWindow")
-        QMainWindow.resize(631, 464)
+        QMainWindow.resize(690, 584)
         QMainWindow.setWindowOpacity(1.0)
         self.centralwidget = QtWidgets.QWidget(QMainWindow)
         self.centralwidget.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setObjectName("label_4")
+        self.verticalLayout_3.addWidget(self.label_4)
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setObjectName("textEdit")
         self.verticalLayout_3.addWidget(self.textEdit)
@@ -45,6 +48,24 @@ class Ui_QMainWindow(object):
         self.checkNSFWService = QtWidgets.QCheckBox(self.centralwidget)
         self.checkNSFWService.setObjectName("checkNSFWService")
         self.verticalLayout_3.addWidget(self.checkNSFWService)
+        self.saveHTML = QtWidgets.QCheckBox(self.centralwidget)
+        self.saveHTML.setObjectName("saveHTML")
+        self.verticalLayout_3.addWidget(self.saveHTML)
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setObjectName("label_3")
+        self.verticalLayout_3.addWidget(self.label_3)
+        self.htmlTags = QtWidgets.QLineEdit(self.centralwidget)
+        self.htmlTags.setObjectName("htmlTags")
+        self.verticalLayout_3.addWidget(self.htmlTags)
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setObjectName("label")
+        self.verticalLayout_3.addWidget(self.label)
+        self.pathToHTML = QtWidgets.QLineEdit(self.centralwidget)
+        self.pathToHTML.setObjectName("pathToHTML")
+        self.verticalLayout_3.addWidget(self.pathToHTML)
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_3.addWidget(self.label_2)
         self.usernameIn = QtWidgets.QLineEdit(self.centralwidget)
         self.usernameIn.setInputMask("")
         self.usernameIn.setText("")
@@ -55,7 +76,7 @@ class Ui_QMainWindow(object):
         self.verticalLayout_3.addWidget(self.go)
         QMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(QMainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 631, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 690, 22))
         self.menubar.setObjectName("menubar")
         self.menuInformation = QtWidgets.QMenu(self.menubar)
         self.menuInformation.setObjectName("menuInformation")
@@ -63,6 +84,9 @@ class Ui_QMainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(QMainWindow)
         self.statusbar.setObjectName("statusbar")
         QMainWindow.setStatusBar(self.statusbar)
+        self.creditsTrigger = QtWidgets.QAction(QMainWindow)
+        self.creditsTrigger.setObjectName("creditsTrigger")
+        self.menuInformation.addAction(self.creditsTrigger)
         self.menubar.addAction(self.menuInformation.menuAction())
 
         self.retranslateUi(QMainWindow)
@@ -71,10 +95,16 @@ class Ui_QMainWindow(object):
     def retranslateUi(self, QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         QMainWindow.setWindowTitle(_translate("QMainWindow", "AkumaPy | Forensic Search"))
+        self.label_4.setText(_translate("QMainWindow", "Log:"))
         self.labelForPath.setText(_translate("QMainWindow", "Path to logfile (optional)"))
         self.plainListRadio.setText(_translate("QMainWindow", "Simple Output"))
         self.textFileRadio.setText(_translate("QMainWindow", "To .txt file"))
         self.jsonFileRadio.setText(_translate("QMainWindow", "To .json file"))
         self.checkNSFWService.setText(_translate("QMainWindow", "NSFW"))
+        self.saveHTML.setText(_translate("QMainWindow", "Save HTML Content of specific Tag"))
+        self.label_3.setText(_translate("QMainWindow", "HTML Tag (Optional e.g. \"p\" or \"main\")"))
+        self.label.setText(_translate("QMainWindow", "Path to HTML file (optional)"))
+        self.label_2.setText(_translate("QMainWindow", "Username to hunt"))
         self.go.setText(_translate("QMainWindow", "Start the Hunt"))
         self.menuInformation.setTitle(_translate("QMainWindow", "Information"))
+        self.creditsTrigger.setText(_translate("QMainWindow", "Credits"))

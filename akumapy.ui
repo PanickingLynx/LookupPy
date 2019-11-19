@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>631</width>
-    <height>464</height>
+    <width>690</width>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,6 +21,13 @@
     <enum>Qt::LeftToRight</enum>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Log:</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QTextEdit" name="textEdit"/>
     </item>
@@ -76,6 +83,40 @@
      </widget>
     </item>
     <item>
+     <widget class="QCheckBox" name="saveHTML">
+      <property name="text">
+       <string>Save HTML Content of specific Tag</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>HTML Tag (Optional e.g. &quot;p&quot; or &quot;main&quot;)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="htmlTags"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Path to HTML file (optional)</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="pathToHTML"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Username to hunt</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QLineEdit" name="usernameIn">
       <property name="inputMask">
        <string/>
@@ -99,7 +140,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>631</width>
+     <width>690</width>
      <height>22</height>
     </rect>
    </property>
@@ -107,10 +148,16 @@
     <property name="title">
      <string>Information</string>
     </property>
+    <addaction name="creditsTrigger"/>
    </widget>
    <addaction name="menuInformation"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="creditsTrigger">
+   <property name="text">
+    <string>Credits</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

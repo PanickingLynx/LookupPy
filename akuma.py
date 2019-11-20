@@ -64,7 +64,7 @@ def hunt():
             #Look for Data suspicious of a missing profile in the title
             page = requests.get(respaced)
             soup = BeautifulSoup(page.text, 'html.parser')
-            status = soup.find('body').extract()
+            status = soup.find('html').extract()
             status = status.text.lower()
             #Add entry
 

@@ -34,6 +34,9 @@ def hunt():
     output = ""
     name = w.ui.usernameIn.text()
     pathToLog = w.ui.filePath.text()
+    # FOR loop, iteration durch jede line eine textdokuments (dictionary)
+    # Ersetze gewisse buchstaben durch Zahlen in namen mit regular expression bei der circa letzten iteration
+    # einträge in dictionary entweder vor oder nach username eingefügt
     for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         json.dumps(field)
         wname = field["name"]

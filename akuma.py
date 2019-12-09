@@ -45,6 +45,7 @@ def hunt():
             output = output + "--------------------\n"
             output = output + "\nCENSORED\n"
         else:
+            #Insert Name taken from UI Field into link with a regular expression
             carded = re.sub("WILDCARD", name, field["link"])
             respaced = re.sub("\s", "_", carded)
             req = requests.get(respaced).status_code
@@ -64,14 +65,15 @@ def hunt():
                 output = output + "301 MOVED!\n"
             else:
                 output = output + "TIMEOUT OR DOWN!\n"
-            #Look for Data suspicious of a missing profile in the title
+            #Look for Data suspicious of a missing profile in the html document
             page = requests.get(respaced)
             soup = BeautifulSoup(page.text, 'html.parser')
-            status = soup.find('body').extract()
+            status = soup.find('html').extract()
             status = status.text.lower()
             #Add entry
 
             if w.ui.saveHTML.isChecked():
+                #Save data from custom html tag given from UI if the option is checked
                 soup2 = BeautifulSoup(page.text, 'html.parser')
                 deeptext = w.ui.htmlTags.text()
                 htmltext = soup2.find(deeptext).extract()
@@ -79,7 +81,8 @@ def hunt():
                 htmlFile.write(str(htmltext))
                 htmlFile.close()
 
-            if status is not None:
+            if status is not None: 
+                #If the website gave back a HTTP Status code, check for words suspicious of a missing page
                 if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status:
                     output = output + "FAILED TO FIND!\n"
                 else:
@@ -87,14 +90,17 @@ def hunt():
             else:
                 output = output + "EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?\n"
                 
-    w.ui.textEdit.setText(output)
+    #Give output to the main Log field
+    w.ui.textEdit.setText(output) 
+    #Write to a textfile if wanted
     if w.ui.textFileRadio.isChecked():
         outFileText = open(pathToLog, "w")
         outFileText.write(output)
         outFileText.close()
     
+    #JSON Output will go here
 
-
+#Wait for start trigger
 w.ui.go.clicked.connect(lambda: hunt())
 w.show()
 sys.exit(app.exec_())

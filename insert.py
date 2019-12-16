@@ -6,16 +6,21 @@ mycol = mydb["links"]
 
 def main():
     name = input("Insert a fitting name for the social network you wanna add: ")
-    print("Please Insert the link you wanna add, make sure to add a WILDCARD into the link whereever the Username would be: ")
+    print("Please Insert the link you wanna add, make sure to add a WILDCARD into the link whereever the Username would be (NEEDS http:// OR https://): ")
     link = input("Insert the link here: ")
     print("")
     isNSFW = input("Is this a NSFW link? If yes, put a 1, if no put a 0: ")
     print(name, isNSFW, link)
-    if "http://" or "https://" not in link:
+    print(link.find("http://"))
+    if "http://" in link == False:
         print("INVALID URL, MISSING HTTP OR HTTPS!!!")
         input("PRESS ENTER TO RESET!")
         main()
-    elif "WILDCARD" not in link:
+    if "https://" in link == False:
+        print("INVALID URL, MISSING HTTP OR HTTPS!!!")
+        input("PRESS ENTER TO RESET!")
+        main()
+    if "WILDCARD" not in link:
         print("PLEASE PUT THE 'WILDCARD' STRING INTO A VALID PLACE IN THE LINK")
         input("PRESS ENTER TO RESET!")
         main()
@@ -23,7 +28,7 @@ def main():
         print("NO isNSFW ASSIGNED! ENTER A 1 OR A 0")
         input("PRESS ENTER TO RESET!")
         main()
-    if name or link or isNSFW == "":
+    if name == "" or link == "" or isNSFW == "":
         print("MISSING PARAMETER! PLEASE RETRY!")
         input("PRESS ENTER TO RESET!")
         main()

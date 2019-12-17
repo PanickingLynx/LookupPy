@@ -33,6 +33,10 @@ def namevariation(name, field):
     y = 0
     newname = [""]
     respaced = [""]
+    if w.ui.namepath.text() == "":
+        w.ui.textEdit.clear()
+        w.ui.textEdit.setText("ERROR. Please give a path to a .txt File for\n automatic name variation.\n This can also be empty.\n")
+        trigger()
     path = open(w.ui.namepath.text(), "r")
     lines = path.readlines()
     x = 0
@@ -44,14 +48,12 @@ def namevariation(name, field):
             suffix = lines[x]
         elif "*" in lines[x]:
             prefix = lines[x]
-        print(y)
         newname.append(prefix + name + suffix)
         carded = re.sub("WILDCARD", newname[y], field["link"])
         modified = re.sub("\s", "_", carded)
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
         respaced.append(re.sub("\n", "", modified))
-        print(modified)
         x = x + 1
         y = y + 1
     
@@ -78,7 +80,6 @@ def hunt():
                 z = z + 1
             else:
                 #Insert Name taken from UI Field into link with a regular expression
-                print(mainlink)
                 req = requests.get(mainlink).status_code
                 output = output + "--------------------\n"
                 output = output + "\n" + wname + "\n"
@@ -143,3 +144,6 @@ def statuscheck(req, output, respaced, pathToLog):
 w.ui.go.clicked.connect(lambda: hunt())
 w.show()
 sys.exit(app.exec_())
+
+def trigger():
+    w.ui.go.clicked.connect(lambda: hunt())

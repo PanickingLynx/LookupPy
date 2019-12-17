@@ -52,6 +52,16 @@
      </widget>
     </item>
     <item>
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Path to namevariation wordlist:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="namepath"/>
+    </item>
+    <item>
      <widget class="QRadioButton" name="plainListRadio">
       <property name="text">
        <string>Simple Output</string>

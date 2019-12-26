@@ -28,6 +28,9 @@ MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
 MyDB = MyClient["AkumaPy"]
 mycol = MyDB["links"]
 
+def trigger():
+    w.ui.go.clicked.connect(lambda: hunt())
+
 #Sample DB Search Criteria
 def namevariation(name, field):
     y = 0
@@ -145,5 +148,4 @@ w.ui.go.clicked.connect(lambda: hunt())
 w.show()
 sys.exit(app.exec_())
 
-def trigger():
-    w.ui.go.clicked.connect(lambda: hunt())
+

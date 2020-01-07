@@ -20,7 +20,7 @@ class AppWindow(QMainWindow):
 
 app = QApplication(sys.argv)
 app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-app.setWindowIcon("./lib/png/mainicon.png")
+app.setWindowIcon("./mainicon.png")
 w = AppWindow()
 
 #Conect to Database and get modules

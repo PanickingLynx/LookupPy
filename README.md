@@ -68,3 +68,8 @@ The user can choose to get a plain output, output to a .txt document or JSON for
 - ~~Site html search to get a more specific output~~ [Finished]
 - Integrating database insertion into GUI
 - Adding credits to hotbar on the top of the GUI
+
+### Additional Credits
+
+- Maze aka. Black_eks [Instagram](https://www.instagram.com/black_eks/) for creating the tools icon.
+- Doelicious [Instagram](https://www.instagram.com/kcxzy/) for letting me use her username extensively for testing purposes.

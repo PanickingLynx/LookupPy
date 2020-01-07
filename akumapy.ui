@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>690</width>
-    <height>584</height>
+    <height>630</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QTextEdit" name="textEdit"/>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="textInteractionFlags">
+       <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="labelForPath">
@@ -48,6 +52,13 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="useNameVar">
+      <property name="text">
+       <string>Wordlisted namevariation</string>
       </property>
      </widget>
     </item>
@@ -160,13 +171,7 @@
     </property>
     <addaction name="creditsTrigger"/>
    </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
-    </property>
-   </widget>
    <addaction name="menuInformation"/>
-   <addaction name="menuSettings"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="creditsTrigger">

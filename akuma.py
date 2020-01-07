@@ -20,8 +20,8 @@ class AppWindow(QMainWindow):
 
 app = QApplication(sys.argv)
 app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+app.setWindowIcon("./lib/png/mainicon.png")
 w = AppWindow()
-
 
 #Conect to Database and get modules
 MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -73,7 +73,10 @@ def hunt():
     for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         z = 1
         for i in namevariation(name, field):
-            mainlink = namevariation(name, field)[z]
+            if w.ui.useNameVar.isChecked:
+                mainlink = namevariation(name, field)[z]
+            else:
+                mainlink = field["link"] + name
             json.dumps(field)
             wname = field["name"]
             wtype = field["type"]
@@ -82,7 +85,6 @@ def hunt():
                 output = output + "\nCENSORED\n"
                 z = z + 1
             else:
-                #Insert Name taken from UI Field into link with a regular expression
                 req = requests.get(mainlink).status_code
                 output = output + "--------------------\n"
                 output = output + "\n" + wname + "\n"
@@ -147,5 +149,3 @@ def statuscheck(req, output, respaced, pathToLog):
 w.ui.go.clicked.connect(lambda: hunt())
 w.show()
 sys.exit(app.exec_())
-
-

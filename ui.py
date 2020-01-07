@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './akumapy.ui'
+# Form implementation generated from reading ui file 'akumapy.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_QMainWindow(object):
     def setupUi(self, QMainWindow):
         QMainWindow.setObjectName("QMainWindow")
-        QMainWindow.resize(690, 584)
+        QMainWindow.resize(690, 630)
         QMainWindow.setWindowOpacity(1.0)
         self.centralwidget = QtWidgets.QWidget(QMainWindow)
         self.centralwidget.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -24,6 +24,7 @@ class Ui_QMainWindow(object):
         self.label_4.setObjectName("label_4")
         self.verticalLayout_3.addWidget(self.label_4)
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setTextInteractionFlags(QtCore.Qt.TextSelectableByKeyboard|QtCore.Qt.TextSelectableByMouse)
         self.textEdit.setObjectName("textEdit")
         self.verticalLayout_3.addWidget(self.textEdit)
         self.labelForPath = QtWidgets.QLabel(self.centralwidget)
@@ -35,6 +36,9 @@ class Ui_QMainWindow(object):
         self.filePath.setAlignment(QtCore.Qt.AlignCenter)
         self.filePath.setObjectName("filePath")
         self.verticalLayout_3.addWidget(self.filePath)
+        self.useNameVar = QtWidgets.QCheckBox(self.centralwidget)
+        self.useNameVar.setObjectName("useNameVar")
+        self.verticalLayout_3.addWidget(self.useNameVar)
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setObjectName("label_5")
         self.verticalLayout_3.addWidget(self.label_5)
@@ -86,8 +90,6 @@ class Ui_QMainWindow(object):
         self.menubar.setObjectName("menubar")
         self.menuInformation = QtWidgets.QMenu(self.menubar)
         self.menuInformation.setObjectName("menuInformation")
-        self.menuSettings = QtWidgets.QMenu(self.menubar)
-        self.menuSettings.setObjectName("menuSettings")
         QMainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(QMainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -96,7 +98,6 @@ class Ui_QMainWindow(object):
         self.creditsTrigger.setObjectName("creditsTrigger")
         self.menuInformation.addAction(self.creditsTrigger)
         self.menubar.addAction(self.menuInformation.menuAction())
-        self.menubar.addAction(self.menuSettings.menuAction())
 
         self.retranslateUi(QMainWindow)
         QtCore.QMetaObject.connectSlotsByName(QMainWindow)
@@ -106,6 +107,7 @@ class Ui_QMainWindow(object):
         QMainWindow.setWindowTitle(_translate("QMainWindow", "AkumaPy | Forensic Search"))
         self.label_4.setText(_translate("QMainWindow", "Log:"))
         self.labelForPath.setText(_translate("QMainWindow", "Path to logfile (optional)"))
+        self.useNameVar.setText(_translate("QMainWindow", "Wordlisted namevariation"))
         self.label_5.setText(_translate("QMainWindow", "Path to namevariation wordlist:"))
         self.plainListRadio.setText(_translate("QMainWindow", "Simple Output"))
         self.textFileRadio.setText(_translate("QMainWindow", "To .txt file"))
@@ -117,5 +119,4 @@ class Ui_QMainWindow(object):
         self.label_2.setText(_translate("QMainWindow", "Username to hunt"))
         self.go.setText(_translate("QMainWindow", "Start the Hunt"))
         self.menuInformation.setTitle(_translate("QMainWindow", "Information"))
-        self.menuSettings.setTitle(_translate("QMainWindow", "Settings"))
         self.creditsTrigger.setText(_translate("QMainWindow", "Credits"))

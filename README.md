@@ -71,5 +71,5 @@ The user can choose to get a plain output, output to a .txt document or JSON for
 
 ### Additional Credits
 
-- Maze aka. Black_eks [Instagram](https://www.instagram.com/black_eks/) for creating the tools icon.
-- Doelicious [Instagram](https://www.instagram.com/kcxzy/) for letting me use her username extensively for testing purposes.
+- Maze aka. Black_eks for creating the tools icon. [Instagram](https://www.instagram.com/black_eks/)
+- Doelicious for letting me use her username extensively for testing purposes. [Instagram](https://www.instagram.com/kcxzy/)

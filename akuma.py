@@ -7,6 +7,7 @@ import requests
 import pymongo
 from bs4 import BeautifulSoup
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5 import QtGui
 import qdarkstyle
 from ui import Ui_QMainWindow
 
@@ -20,7 +21,7 @@ class AppWindow(QMainWindow):
 
 app = QApplication(sys.argv)
 app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
-app.setWindowIcon("./mainicon.png")
+app.setWindowIcon(QtGui.QIcon("./mainicon.png"))
 w = AppWindow()
 
 #Conect to Database and get modules

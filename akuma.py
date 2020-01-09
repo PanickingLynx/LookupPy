@@ -131,7 +131,7 @@ def statuscheck(req, output, mainlink, pathToLog):
         print(mainlink)
         page = requests.get(mainlink[y])
         soup = BeautifulSoup(page.text, 'html.parser')
-        status = soup.find('html').extract()
+        status = soup.find('title').extract()
         status = status.text.lower()
         #Add entry
 

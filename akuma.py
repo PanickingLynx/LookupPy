@@ -68,8 +68,8 @@ def namevariation(name, field):
 
 
 def hunt():
-    mainname = [""]
-    mainlink = [""]
+    mainname = []
+    mainlink = []
     name = w.ui.usernameIn.text()
     output = ""
     pathToLog = w.ui.filePath.text()

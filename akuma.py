@@ -62,10 +62,9 @@ def namevariation(name, field):
         x = x + 1
         y = y + 1
         print(respaced)
-    
+
     return respaced
 
-    
 
 
 def hunt():
@@ -171,10 +170,8 @@ def showCredits():
     msg.setInformativeText("- Doelicious (Testing) \n- Maze aka. Black_eks (Script Icon artwork)\n")
     msg.setEscapeButton(msg.Ok)
     retval = msg.exec()
-    
     if retval == msg.Ok:
         trigger()
-    
 
 #Wait for start trigger
 w.ui.creditsTrigger.triggered.connect(lambda: showCredits())

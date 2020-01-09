@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'akumapy.ui'
+# Form implementation generated from reading ui file './akumapy.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -33,18 +33,19 @@ class Ui_QMainWindow(object):
         self.filePath = QtWidgets.QLineEdit(self.centralwidget)
         self.filePath.setInputMask("")
         self.filePath.setText("")
-        self.filePath.setAlignment(QtCore.Qt.AlignCenter)
+        self.filePath.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.filePath.setObjectName("filePath")
         self.verticalLayout_3.addWidget(self.filePath)
-        self.useNameVar = QtWidgets.QCheckBox(self.centralwidget)
-        self.useNameVar.setObjectName("useNameVar")
-        self.verticalLayout_3.addWidget(self.useNameVar)
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setObjectName("label_5")
         self.verticalLayout_3.addWidget(self.label_5)
         self.namepath = QtWidgets.QLineEdit(self.centralwidget)
+        self.namepath.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.namepath.setObjectName("namepath")
         self.verticalLayout_3.addWidget(self.namepath)
+        self.useNameVar = QtWidgets.QCheckBox(self.centralwidget)
+        self.useNameVar.setObjectName("useNameVar")
+        self.verticalLayout_3.addWidget(self.useNameVar)
         self.plainListRadio = QtWidgets.QRadioButton(self.centralwidget)
         self.plainListRadio.setChecked(True)
         self.plainListRadio.setObjectName("plainListRadio")
@@ -107,8 +108,8 @@ class Ui_QMainWindow(object):
         QMainWindow.setWindowTitle(_translate("QMainWindow", "AkumaPy | Forensic Search"))
         self.label_4.setText(_translate("QMainWindow", "Log:"))
         self.labelForPath.setText(_translate("QMainWindow", "Path to logfile (optional)"))
-        self.useNameVar.setText(_translate("QMainWindow", "Wordlisted namevariation"))
         self.label_5.setText(_translate("QMainWindow", "Path to namevariation wordlist:"))
+        self.useNameVar.setText(_translate("QMainWindow", "Wordlisted namevariation"))
         self.plainListRadio.setText(_translate("QMainWindow", "Simple Output"))
         self.textFileRadio.setText(_translate("QMainWindow", "To .txt file"))
         self.jsonFileRadio.setText(_translate("QMainWindow", "To .json file"))

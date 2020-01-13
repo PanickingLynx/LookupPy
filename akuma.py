@@ -6,11 +6,12 @@ import sys
 import requests
 import pymongo
 from bs4 import BeautifulSoup
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog
 from PyQt5 import QtGui
 from PyQt5.QtGui import QPixmap
 import qdarkstyle
 from ui import Ui_QMainWindow
+from databaseInsertion import Ui_databaseInsertion
 
 class AppWindow(QMainWindow):
     def __init__(self):
@@ -19,10 +20,24 @@ class AppWindow(QMainWindow):
         self.ui.setupUi(self)
         self.show()
 
+class DBInsertion(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.databaseInsertion = Ui_databaseInsertion()
+        self.databaseInsertion.setupUi(self)
+        self.show()
+
 
 app = QApplication(sys.argv)
 app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 app.setWindowIcon(QtGui.QIcon("./mainicon.png"))
+
+insertion = QApplication(sys.argv)
+insertion.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+insertion.setWindowIcon(QtGui.QIcon("./mainicon.png"))
+
+d = DBInsertion()
+
 w = AppWindow()
 
 #Conect to Database and get modules
@@ -33,6 +48,32 @@ mycol = MyDB["links"]
 def trigger():
     w.ui.creditsTrigger.triggered.connect(lambda: showCredits())
     w.ui.go.clicked.connect(lambda: hunt())
+    w.ui.insertionTrigger.triggered.connect(lambda: insertToDatabase())
+
+def insertToDatabase():
+    d.show()
+    d.accepted.connect(lambda: push())
+    d.rejected.connect(lambda: trigger())
+    
+
+def push():
+    siteName = d.databaseInsertion.nameOfSite.text()
+    siteLink = d.databaseInsertion.linkToSite.text()
+
+    if d.databaseInsertion.siteIsNSFW.isChecked():
+        siteIsNSFW = 1
+    else:
+        siteIsNSFW = 0
+
+    newsite = {
+        "name": siteName,
+        "link": siteLink,
+        "type": siteIsNSFW
+        }
+    print(newsite)
+    mycol.insert_one(newsite)
+    trigger()
+
 
 #Sample DB Search Criteria
 def namevariation(name, field):
@@ -175,6 +216,9 @@ def showCredits():
 
 #Wait for start trigger
 w.ui.creditsTrigger.triggered.connect(lambda: showCredits())
+w.ui.insertionTrigger.triggered.connect(lambda: insertToDatabase())
 w.ui.go.clicked.connect(lambda: hunt())
 w.show()
+d.hide()
 sys.exit(app.exec_())
+sys.exit(DBInsertion.exec_())

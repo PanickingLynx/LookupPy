@@ -55,7 +55,7 @@ def namevariation(name, field):
             prefix = lines[x]
         newname.insert(x, prefix + name + suffix)
         carded = re.sub("WILDCARD", newname[y], field["link"])
-        modified = re.sub("\s", "_", carded)
+        modified = re.sub("\s", "", carded)
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
         respaced.insert(x, re.sub("\n", "", modified))

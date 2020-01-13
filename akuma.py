@@ -62,15 +62,14 @@ def namevariation(name, field):
         x = x + 1
         y = y + 1
         print(respaced)
-    
+
     return respaced
 
-    
 
 
 def hunt():
-    mainname = [""]
-    mainlink = [""]
+    mainname = []
+    mainlink = []
     name = w.ui.usernameIn.text()
     output = ""
     pathToLog = w.ui.filePath.text()
@@ -131,7 +130,7 @@ def statuscheck(req, output, mainlink, pathToLog):
         print(mainlink)
         page = requests.get(mainlink[y])
         soup = BeautifulSoup(page.text, 'html.parser')
-        status = soup.find('html').extract()
+        status = soup.find('title').extract()
         status = status.text.lower()
         #Add entry
 
@@ -171,10 +170,8 @@ def showCredits():
     msg.setInformativeText("- Doelicious (Testing) \n- Maze aka. Black_eks (Script Icon artwork)\n")
     msg.setEscapeButton(msg.Ok)
     retval = msg.exec()
-    
     if retval == msg.Ok:
         trigger()
-    
 
 #Wait for start trigger
 w.ui.creditsTrigger.triggered.connect(lambda: showCredits())

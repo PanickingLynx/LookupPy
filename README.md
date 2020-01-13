@@ -66,7 +66,7 @@ The user can choose to get a plain output, output to a .txt document or JSON for
 - JSON Output
 - ~~Automatic name variation~~ [Finished]
 - ~~Site html search to get a more specific output~~ [Finished]
-- Integrating database insertion into GUI
+- ~~Integrating database insertion into GUI~~ [Finished]
 - ~~Adding credits to hotbar on the top of the GUI~~ [Finished]
 
 ### Additional Credits

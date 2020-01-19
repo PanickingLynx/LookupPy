@@ -45,8 +45,8 @@ link: The link syntax (WILDCARD is the placeholder for the username and will be 
 
 type: Site type (0 = SFW / 1 = NSFW)
 
-After reading out the contents of each database entry, the site will send a HTTP Request to the corresponding link and get its status code.
-Then the title of the page will be checked if there is any sign of the profile not existing.
+After reading out the contents of each database entry, the script will send a HTTP Request to the corresponding link and get its status code.
+Then the html of the page will be checked if there is any sign of the profile not existing.
 
 The user can choose to get a plain output, output to a .txt document or JSON format.
 

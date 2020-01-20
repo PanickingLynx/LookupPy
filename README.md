@@ -63,7 +63,7 @@ The user can choose to get a plain output, output to a .txt document or JSON for
 
 ### Planned features
 
-- JSON Output
+- ~~JSON Output~~ [Finished]
 - ~~Automatic name variation~~ [Finished]
 - ~~Site html search to get a more specific output~~ [Finished]
 - ~~Integrating database insertion into GUI~~ [Finished]

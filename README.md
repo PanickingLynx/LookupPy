@@ -5,6 +5,7 @@
 - Why would you want to use AkumaPy?
 - Why was this created?
 - How does it work?
+- What is the JSON Output Syntax?
 - Which Modules were used?
 - Features and planned features.
 
@@ -49,6 +50,25 @@ After reading out the contents of each database entry, the script will send a HT
 Then the html of the page will be checked if there is any sign of the profile not existing.
 
 The user can choose to get a plain output, output to a .txt document or JSON format.
+
+### What is the JSON Output syntax?
+
+```
+{
+    "username" : examplename,
+    "link" : https://example.com/examplename,
+    "site_status" : 404,
+    "hit" : bad
+}
+```
+
+username: Account owners name.
+
+link: Link to Website / Social Network.
+
+site_status: HTTP Status Code recieved.
+
+hit: Something was found = good, Nothing was found = bad, Errors occured = error.
 
 ### Which modules were used?
 

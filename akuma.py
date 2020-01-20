@@ -70,7 +70,6 @@ def push():
         "link": siteLink,
         "type": siteIsNSFW
         }
-    print(newsite)
     mycol.insert_one(newsite)
     trigger()
 
@@ -102,7 +101,6 @@ def namevariation(name, field):
         respaced.insert(x, re.sub("\n", "", modified))
         x = x + 1
         y = y + 1
-        print(respaced)
 
     return respaced
 
@@ -117,14 +115,12 @@ def hunt():
     
     for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         z = 0
-        print(field["link"])
         if w.ui.useNameVar.isChecked():
             mainname.clear()
             mainname = namevariation(name, field)
         else:
             mainname.clear()
             mainname.insert(0, name)
-            print(mainname)
         for i in mainname:
             if w.ui.useNameVar.isChecked():
                 mainlink = namevariation(name, field)
@@ -139,7 +135,6 @@ def hunt():
                 output = output + "\nCENSORED\n"
                 z = z + 1
             else:
-                print(mainlink)
                 req = requests.get(mainlink[z]).status_code
                 output = output + "--------------------\n"
                 output = output + "\n" + wname + "\n"
@@ -168,7 +163,6 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             
 
         #Look for Data suspicious of a missing profile in the html document
-        print(mainlink)
         page = requests.get(mainlink[y])
         soup = BeautifulSoup(page.text, 'html.parser')
         status = soup.find('title').extract()

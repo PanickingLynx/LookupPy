@@ -144,12 +144,12 @@ def hunt():
                 output = output + "--------------------\n"
                 output = output + "\n" + wname + "\n"
                 output = output + mainlink[z] + "\n"
-                output = statuscheck(req, output, mainlink, pathToLog)
+                output = statuscheck(req, output, mainlink, pathToLog, mainname)
                 z = z + 1
 
 
 
-def statuscheck(req, output, mainlink, pathToLog):
+def statuscheck(req, output, mainlink, pathToLog, mainname):
     y = 0
     for i in mainlink:
         if req == 200:
@@ -188,10 +188,13 @@ def statuscheck(req, output, mainlink, pathToLog):
             #If the website gave back a HTTP Status code, check for words suspicious of a missing page
             if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status:
                 output = output + "FAILED TO FIND!\n"
+                hit = "bad"
             else:
                 output = output + "PROBABLY EXISTS!\n"
+                hit = "good"
         else:
             output = output + "EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?\n"
+            hit = "error"
         y = y + 1
         #Give output to the main Log field
         w.ui.textEdit.setText(output) 
@@ -200,8 +203,20 @@ def statuscheck(req, output, mainlink, pathToLog):
             outFileText = open(pathToLog, "w")
             outFileText.write(output)
             outFileText.close()
+        if w.ui.jsonFileRadio.isChecked():
+            toJSON = {
+                "username": mainname,
+                "link": mainlink,
+                "site_status": req,
+                "hit": hit
+            }
+            textJSON = json.dumps(toJSON)
+            textJSON = textJSON + "\n"
+            jfile = open(pathToLog, "a")
+            jfile.write(textJSON)
+            jfile.close()
         return output
-    #JSON Output will go here
+
 
 def showCredits():
     msg = QMessageBox()

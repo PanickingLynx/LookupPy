@@ -1,5 +1,7 @@
 # AkumaPy / Forensic Search
 
+![Main Logo](https://github.com/PanickingLynx/AkumaPy/blob/master/mainicon.png)
+
 ### Table of Contents
 - What is AkumaPy?
 - Why would you want to use AkumaPy?

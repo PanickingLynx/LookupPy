@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_QMainWindow(object):
     def setupUi(self, QMainWindow):
         QMainWindow.setObjectName("QMainWindow")
-        QMainWindow.resize(690, 630)
+        QMainWindow.resize(690, 661)
         QMainWindow.setWindowOpacity(1.0)
         self.centralwidget = QtWidgets.QWidget(QMainWindow)
         self.centralwidget.setLayoutDirection(QtCore.Qt.LeftToRight)

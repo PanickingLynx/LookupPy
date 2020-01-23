@@ -206,6 +206,9 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             }
             textJSON = json.dumps(toJSON)
             textJSON = textJSON + "\n"
+            textJSON = re.sub(", ", ", \n", textJSON)
+            textJSON = re.sub("{", "{\n", textJSON)
+            textJSON = re.sub("}", "\n}", textJSON)
             jfile = open(pathToLog, "a")
             jfile.write(textJSON)
             jfile.close()

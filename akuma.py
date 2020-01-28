@@ -102,6 +102,18 @@ def namevariation(name, field):
         x = x + 1
         y = y + 1
 
+    x = x - 1
+    y = y - 1  
+    if ";" in lines[x]:
+        suffix = lines[x]
+    newname.insert(x, name + suffix)
+    carded = re.sub("WILDCARD", newname[y], field["link"])
+    modified = re.sub("\s", "", carded)
+    modified = re.sub(re.escape("*"), "", modified)
+    modified = re.sub(re.escape(";"), "", modified)
+    respaced.insert(x, re.sub("\n", "", modified))
+    
+
     return respaced
 
 

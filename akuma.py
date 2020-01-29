@@ -170,7 +170,6 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
         elif req == 301:
             output = output + "301 MOVED!\n"
         else:
-
             output = output + "TIMEOUT OR DOWN!\n"
             
 

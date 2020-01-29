@@ -54,7 +54,6 @@ def insertToDatabase():
     d.show()
     d.accepted.connect(lambda: push())
     d.rejected.connect(lambda: trigger())
-    
 
 def push():
     siteName = d.databaseInsertion.nameOfSite.text()
@@ -103,7 +102,7 @@ def namevariation(name, field):
         y = y + 1
 
     x = x - 1
-    y = y - 1  
+    y = y - 1
     if ";" in lines[x]:
         suffix = lines[x]
     newname.insert(x, name + suffix)
@@ -112,8 +111,6 @@ def namevariation(name, field):
     modified = re.sub(re.escape("*"), "", modified)
     modified = re.sub(re.escape(";"), "", modified)
     respaced.insert(x, re.sub("\n", "", modified))
-    
-
     return respaced
 
 
@@ -124,7 +121,6 @@ def hunt():
     name = w.ui.usernameIn.text()
     output = ""
     pathToLog = w.ui.filePath.text()
-    
     for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         z = 0
         if w.ui.useNameVar.isChecked():
@@ -171,7 +167,6 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             output = output + "301 MOVED!\n"
         else:
             output = output + "TIMEOUT OR DOWN!\n"
-            
 
         #Look for Data suspicious of a missing profile in the html document
         page = requests.get(mainlink[y])
@@ -189,7 +184,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             htmlFile.write(str(htmltext))
             htmlFile.close()
 
-        if status is not None: 
+        if status is not None:
             #If the website gave back a HTTP Status code, check for words suspicious of a missing page
             if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status:
                 output = output + "FAILED TO FIND!\n"
@@ -202,7 +197,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             hit = "error"
         y = y + 1
         #Give output to the main Log field
-        w.ui.textEdit.setText(output) 
+        w.ui.textEdit.setText(output)
         #Write to a textfile if wanted
         if w.ui.textFileRadio.isChecked():
             outFileText = open(pathToLog, "w")

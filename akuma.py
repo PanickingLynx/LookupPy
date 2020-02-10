@@ -186,7 +186,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
 
         if status is not None:
             #If the website gave back a HTTP Status code, check for words suspicious of a missing page
-            if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status:
+            if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status or "existiert nicht" in status or "doesn't exist" in status:
                 output = output + "FAILED TO FIND!\n"
                 hit = "bad"
             else:

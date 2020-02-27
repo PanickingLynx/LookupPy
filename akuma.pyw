@@ -120,7 +120,7 @@ def hunt():
     mainlink = []
     name = w.ui.usernameIn.text()
     output = ""
-    pathToLog = w.ui.filePath.text()
+    pathToLog = "./{}.txt".format(w.ui.usernameIn.text())
     for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         z = 0
         if w.ui.useNameVar.isChecked():
@@ -177,10 +177,10 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
 
         if w.ui.saveHTML.isChecked():
             #Save data from custom html tag given from UI if the option is checked
+            htmlFile = open("./{}.html".format(w.ui.usernameIn.text()), "a")
             soup2 = BeautifulSoup(page.text, 'html.parser')
             deeptext = w.ui.htmlTags.text()
             htmltext = soup2.find(deeptext).extract()
-            htmlFile = open(w.ui.pathToHTML.text(), "w")
             htmlFile.write(str(htmltext))
             htmlFile.close()
 

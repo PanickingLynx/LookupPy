@@ -36,26 +36,6 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="labelForPath">
-      <property name="text">
-       <string>Path to logfile (optional)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="filePath">
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QLabel" name="label_5">
       <property name="text">
        <string>Path to namevariation wordlist:</string>
@@ -123,16 +103,6 @@
     </item>
     <item>
      <widget class="QLineEdit" name="htmlTags"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Path to HTML file (optional)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="pathToHTML"/>
     </item>
     <item>
      <widget class="QLabel" name="label_2">

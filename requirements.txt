@@ -1,0 +1,7 @@
+json
+re
+requests
+pymongo
+bs4
+PyQt5
+qdarkstyle

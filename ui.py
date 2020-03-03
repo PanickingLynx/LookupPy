@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './akumapy.ui'
+# Form implementation generated from reading ui file '.\akumapy.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -72,12 +72,14 @@ class Ui_QMainWindow(object):
         self.verticalLayout_3.addWidget(self.go)
         QMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(QMainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 690, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 690, 21))
         self.menubar.setObjectName("menubar")
         self.menuInformation = QtWidgets.QMenu(self.menubar)
         self.menuInformation.setObjectName("menuInformation")
         self.menuInsert = QtWidgets.QMenu(self.menubar)
         self.menuInsert.setObjectName("menuInsert")
+        self.menuPrivacy = QtWidgets.QMenu(self.menubar)
+        self.menuPrivacy.setObjectName("menuPrivacy")
         QMainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(QMainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -86,10 +88,15 @@ class Ui_QMainWindow(object):
         self.creditsTrigger.setObjectName("creditsTrigger")
         self.insertionTrigger = QtWidgets.QAction(QMainWindow)
         self.insertionTrigger.setObjectName("insertionTrigger")
+        self.onTor = QtWidgets.QAction(QMainWindow)
+        self.onTor.setCheckable(True)
+        self.onTor.setObjectName("onTor")
         self.menuInformation.addAction(self.creditsTrigger)
         self.menuInsert.addAction(self.insertionTrigger)
+        self.menuPrivacy.addAction(self.onTor)
         self.menubar.addAction(self.menuInformation.menuAction())
         self.menubar.addAction(self.menuInsert.menuAction())
+        self.menubar.addAction(self.menuPrivacy.menuAction())
 
         self.retranslateUi(QMainWindow)
         QtCore.QMetaObject.connectSlotsByName(QMainWindow)
@@ -110,5 +117,17 @@ class Ui_QMainWindow(object):
         self.go.setText(_translate("QMainWindow", "Start the Hunt"))
         self.menuInformation.setTitle(_translate("QMainWindow", "Information"))
         self.menuInsert.setTitle(_translate("QMainWindow", "Insert"))
+        self.menuPrivacy.setTitle(_translate("QMainWindow", "Privacy"))
         self.creditsTrigger.setText(_translate("QMainWindow", "Credits"))
         self.insertionTrigger.setText(_translate("QMainWindow", "Insert new link"))
+        self.onTor.setText(_translate("QMainWindow", "Enable Tor Circuit"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    QMainWindow = QtWidgets.QMainWindow()
+    ui = Ui_QMainWindow()
+    ui.setupUi(QMainWindow)
+    QMainWindow.show()
+    sys.exit(app.exec_())

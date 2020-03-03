@@ -136,7 +136,7 @@
      <x>0</x>
      <y>0</y>
      <width>690</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInformation">
@@ -151,8 +151,15 @@
     </property>
     <addaction name="insertionTrigger"/>
    </widget>
+   <widget class="QMenu" name="menuPrivacy">
+    <property name="title">
+     <string>Privacy</string>
+    </property>
+    <addaction name="onTor"/>
+   </widget>
    <addaction name="menuInformation"/>
    <addaction name="menuInsert"/>
+   <addaction name="menuPrivacy"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="creditsTrigger">
@@ -163,6 +170,14 @@
   <action name="insertionTrigger">
    <property name="text">
     <string>Insert new link</string>
+   </property>
+  </action>
+  <action name="onTor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Enable Tor Circuit</string>
    </property>
   </action>
  </widget>

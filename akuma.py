@@ -28,11 +28,11 @@ class DBInsertion(QDialog):
         self.show()
 
 def newTorSession():
-    session = requests.session()
-    session.proxies = { 'http': 'socks5h://localhost:9050',
+    newProxy = requests.session()
+    newProxy.proxies = { 'http': 'socks5h://localhost:9050',
                         'https': 'socks5h://localhost:9050'}
     print("Starting a new Tor proxy session....")
-    return session
+    return newProxy
 
 session = newTorSession()
 

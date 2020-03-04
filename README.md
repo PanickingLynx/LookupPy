@@ -129,6 +129,9 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - ~~Integrating database insertion into GUI~~ [Finished]
 - ~~Adding credits to hotbar on the top of the GUI~~ [Finished]
 - ~~Adding Tor routing and privacy options~~ [Finished]
+- Colored terminal output by type
+- OS detection so the tool only runs on Linux and as root
+
 
 ### Additional Credits
 

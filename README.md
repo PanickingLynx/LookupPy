@@ -6,6 +6,7 @@
 - What is AkumaPy?
 - Why would you want to use AkumaPy?
 - Why was this created?
+- How do I set it up?
 - How does it work?
 - What is the JSON Output Syntax?
 - Which Modules were used?

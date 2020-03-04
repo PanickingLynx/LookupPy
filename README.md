@@ -4,6 +4,7 @@
 
 ### Table of Contents
 - What is AkumaPy?
+- Is this tool ispired by Sherlock?
 - Why would you want to use AkumaPy?
 - Why was this created?
 - How do I set it up?
@@ -15,6 +16,11 @@
 ### What is AkumaPy?
 
 AkumaPy is a forensic search tool, designed to find people via username across multiple Social Networks and other sites.
+
+### Is this tool inspired by Sherlock?
+
+Yes, most definitely. Sherlock is one of the tools that made me get into developing OSINT tools and I am really thankful for it.
+You can find this awesome tool here: https://github.com/sherlock-project/sherlock
 
 ### Why would you want to use AkumaPy?
 

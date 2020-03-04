@@ -27,14 +27,14 @@ class DBInsertion(QDialog):
         self.databaseInsertion.setupUi(self)
         self.show()
 
-#def newTorSession():
-#    session = requests.session()
-#    session.proxies = { 'http': 'socks5://172.0.0.1:9050',
-#                        'https': 'socks5://172.0.0.1:9050'}
-#    print("Starting a new Tor proxy session....")
-#    return session
+def newTorSession():
+    session = requests.session()
+    session.proxies = { 'http': 'socks5h://localhost:9050',
+                        'https': 'socks5h://localhost:9050'}
+    print("Starting a new Tor proxy session....")
+    return session
 
-#session = newTorSession()
+session = newTorSession()
 
 app = QApplication(sys.argv)
 app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())

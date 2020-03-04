@@ -25,6 +25,43 @@ It can ease tracking people just by recieving a username on one platform and hun
 AkumaPy was created for a final school project at the [BBS-Betzdorf-Kirchen Technical College](https://www.bbs-betzdorf-kirchen.de "School Homepage").
 It contains multiple areas of programming like Databases, GUI Design and Web-Developement.
 
+### How do I set it up?
+
+To setup AkumaPy, you must have Tor installed and the SOCKS Port must be configured.
+You can do this like so (as root):
+```
+apt install tor
+service start tor
+nano /etc/tor/torrc
+```
+
+In here we uncomment the Lines:
+```
+SOCKSPort 9050
+CookieAuthentication 1
+```
+
+Ctrl+X Y and Enter to save
+Now we will install the MongoDB Server.
+Get it from [mongodb.com](https://www.mongodb.com/ "MongoDB")
+Find the server and run (as root):
+```
+dpkg -i ./the_downloaded_deb
+service mongod start
+```
+If there are errors restart your machine.
+
+Next run (as root):
+```
+service tor restart
+cd /where_you_saved_the_tool/
+pip3 install -r ./requirements.txt
+python3 ./akuma.py
+```
+Then you are done.
+Warning! The Tool will only work under Linux and as root!
+If there are errors with my instructions let me know!
+
 ### How does it work?
 
 The software connects to a local or remote MongoDB database. The database contains all the information about the links which would be searched in the run.
@@ -90,6 +127,7 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - ~~Site html search to get a more specific output~~ [Finished]
 - ~~Integrating database insertion into GUI~~ [Finished]
 - ~~Adding credits to hotbar on the top of the GUI~~ [Finished]
+- ~~Adding Tor routing and privacy options~~ [Finished]
 
 ### Additional Credits
 

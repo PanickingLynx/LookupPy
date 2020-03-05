@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
+import os
+import sys
+
+if not os.geteuid()==0:
+    sys.exit('This script must be run as root!')
 
 import json
 import re
-import sys
 import platform
 import requests
 import pymongo

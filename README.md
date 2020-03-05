@@ -121,6 +121,7 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - json
 - re
 - sys
+- os
 - requests
 - pymongo
 - bs4 
@@ -135,8 +136,8 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - ~~Integrating database insertion into GUI~~ [Finished]
 - ~~Adding credits to hotbar on the top of the GUI~~ [Finished]
 - ~~Adding Tor routing and privacy options~~ [Finished]
-- Colored terminal output by type
-- OS detection so the tool only runs on Linux and as root
+- ~~Colored terminal output by type~~ [Finished]
+- ~~OS detection so the tool only runs on Linux and as root~~ [Finished]
 
 
 ### Additional Credits

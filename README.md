@@ -4,8 +4,10 @@
 
 ### Table of Contents
 - What is AkumaPy?
+- Is this tool ispired by Sherlock?
 - Why would you want to use AkumaPy?
 - Why was this created?
+- How do I set it up?
 - How does it work?
 - What is the JSON Output Syntax?
 - Which Modules were used?
@@ -14,6 +16,11 @@
 ### What is AkumaPy?
 
 AkumaPy is a forensic search tool, designed to find people via username across multiple Social Networks and other sites.
+
+### Is this tool inspired by Sherlock?
+
+Yes, most definitely. Sherlock is one of the tools that made me get into developing OSINT tools and I am really thankful for it.
+You can find this awesome tool here: https://github.com/sherlock-project/sherlock
 
 ### Why would you want to use AkumaPy?
 
@@ -128,6 +135,9 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - ~~Integrating database insertion into GUI~~ [Finished]
 - ~~Adding credits to hotbar on the top of the GUI~~ [Finished]
 - ~~Adding Tor routing and privacy options~~ [Finished]
+- Colored terminal output by type
+- OS detection so the tool only runs on Linux and as root
+
 
 ### Additional Credits
 

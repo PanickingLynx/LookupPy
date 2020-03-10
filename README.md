@@ -38,7 +38,7 @@ To setup AkumaPy, you must have Tor installed and the SOCKS Port must be configu
 You can do this like so (as root):
 ```
 apt install tor
-service start tor
+service tor start
 nano /etc/tor/torrc
 ```
 

@@ -67,7 +67,7 @@ d = DBInsertion()
 
 w = AppWindow()
 
-#Conect to Database and get modules
+#Connect to Database and get modules
 MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
 MyDB = MyClient["AkumaPy"]
 mycol = MyDB["links"]
@@ -105,7 +105,6 @@ def push():
     trigger()
 
 
-#Sample DB Search Criteria
 def namevariation(name, field):
     respaced = []
     newname = []

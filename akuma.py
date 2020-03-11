@@ -127,7 +127,7 @@ def namevariation(name, field):
             prefix = lines[x]
             print(colored("Found a prefix...", "yellow"))
         newname.insert(x, prefix + name + suffix)
-        carded = re.sub("WILDCARD", newname[y], field["link"])
+        carded = field["link"].format(newname[y])
         modified = re.sub("\s", "", carded)
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
@@ -142,7 +142,7 @@ def namevariation(name, field):
         suffix = lines[x]
     print(colored("Mutating the name...", "yellow"))
     newname.insert(x, name + suffix)
-    carded = re.sub("WILDCARD", newname[y], field["link"])
+    carded = field["link"].format(newname[y])
     modified = re.sub("\s", "", carded)
     modified = re.sub(re.escape("*"), "", modified)
     modified = re.sub(re.escape(";"), "", modified)
@@ -176,7 +176,7 @@ def hunt():
                 mainlink = namevariation(name, field)
             else:
                 mainlink.clear()
-                mainlink.insert(0, re.sub("WILDCARD", mainname[z], field["link"]))
+                mainlink.insert(0, field["link"].format(mainname[z]))
             json.dumps(field)
             wname = field["name"]
             wtype = field["type"]

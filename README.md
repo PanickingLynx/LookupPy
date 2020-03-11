@@ -81,14 +81,14 @@ The following text is example JSON for what a document would look like:
 ```
 {
     "name" : "ExampleSite",
-    "link" : "https://example.com/WILDCARD/",
+    "link" : "https://example.com/{}/",
     "type" : "0"
 }
 ```
 
 name: The sites name
 
-link: The link syntax (WILDCARD is the placeholder for the username and will be switched automatically)
+link: The link syntax ({} is the placeholder for the username and will be switched automatically)
 
 type: Site type (0 = SFW / 1 = NSFW)
 

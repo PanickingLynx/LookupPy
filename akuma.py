@@ -209,6 +209,7 @@ def hunt():
 def statuscheck(req, output, mainlink, pathToLog, mainname):
     y = 0
     for i in mainlink:
+        print(colored(mainlink[y], "cyan"))
         print(colored("Testing....", "yellow"))
         if req == 200:
             output = output + "200 OK!\n"

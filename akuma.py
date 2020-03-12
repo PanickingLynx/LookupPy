@@ -95,16 +95,11 @@ print(colored("Getting current MongoDB state...", "yellow"))
 
 #Mainloop rebound
 def trigger():
-    w.ui.creditsTrigger.triggered.connect(lambda: showCredits())
-    w.ui.go.clicked.connect(lambda: hunt())
-    w.ui.insertionTrigger.triggered.connect(lambda: insertToDatabase())
     print(colored("Waiting for another run...", "yellow"))
 
 #Open the Database insertion Windows
 def insertToDatabase():
     d.show()
-    d.accepted.connect(lambda: push())
-    d.rejected.connect(lambda: trigger())
     print(colored("Showing database insertion...", "green"))
 
 #Insert the userdata to the Database
@@ -374,12 +369,16 @@ def showCredits():
         trigger()
         print(colored("Have fun using!", "green"))
 
-#Wait for start trigger
+#Connect all buttons in the application
+d.accepted.connect(lambda: push())
+d.rejected.connect(lambda: trigger())
 w.ui.creditsTrigger.triggered.connect(lambda: showCredits())
 w.ui.insertionTrigger.triggered.connect(lambda: insertToDatabase())
 w.ui.go.clicked.connect(lambda: hunt())
+#Display Windows
 w.show()
 d.hide()
+#READY State
 print(colored("READY!", "green"))
 sys.exit(app.exec_())
 sys.exit(DBInsertion.exec_())

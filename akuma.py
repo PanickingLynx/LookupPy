@@ -58,6 +58,11 @@ class DBInsertion(QDialog):
 user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1'
 headers = {'User-Agent': user_agent}
 
+#Error list for missing indicators
+errorList = open("./errorlist.txt")
+#Stringify the List to compare the words on the page with the list 
+errorListString = str(errorList)
+
 #Get a new tor Proxy session
 def newTorSession():
     #Create a session
@@ -315,7 +320,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
         if status is not None:
             print(colored("Found active HTTP Status code...", "yellow"))
             #If the website gave back a HTTP Status code, check for words suspicious of a missing page
-            if "not found" in status or "missing" in status or "oops" in status or "removed" in status or "nicht gefunden" in status or "fehlt" in status or "ups" in status or "entfernt" in status or "existiert nicht" in status or "doesn't exist" in status:
+            if status in errorListString:
                 print(colored("Guessing that page may not exist...", "yellow"))
                 output = output + "FAILED TO FIND!\n"
                 hit = "bad"

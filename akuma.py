@@ -54,6 +54,10 @@ class DBInsertion(QDialog):
         self.databaseInsertion.setupUi(self)
         self.show()
 
+#Fake user agent to something made up
+user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1'
+headers = {'User-Agent': user_agent}
+
 #Get a new tor Proxy session
 def newTorSession():
     #Create a session
@@ -237,14 +241,14 @@ def hunt():
                     session = newTorSession()
                     print(colored("Getting anonymous request.... Getting statuscode", "yellow"))
                     #Get the current HTTP status code
-                    req = session.get(mainlink[z]).status_code
+                    req = session.get(mainlink[z], headers=headers).status_code
                     print(colored("DONE!", "green"))
                 #If it doesnt use onion routing
                 else:
                     #Get the request without a proxy
                     print(colored("Grabbing new statuscode...", "yellow"))
                     #Get the current HTTP status code
-                    req = requests.get(mainlink[z]).status_code
+                    req = requests.get(mainlink[z], headers=headers).status_code
                     print(colored("DONE!", "green"))
                 #Sample the output with the recieved variables
                 print(colored("Collecting new sampled output data...", "yellow"))
@@ -281,11 +285,11 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             print(colored("Getting new Tor session... Let's go dark... (again)", "magenta"))
             session = newTorSession()
             print(colored("Getting HTML document anonymously....", "yellow"))
-            page = session.get(mainlink[y])
+            page = session.get(mainlink[y], headers=headers)
             print(colored("DONE!", "green"))
         else:
             print(colored("Getting HTML document...", "yellow"))
-            page = requests.get(mainlink[y])
+            page = requests.get(mainlink[y], headers=headers)
             print(colored("DONE!", "green"))
         #Look for Data suspicious of a missing profile in the html document
         print(colored("Parsing HTML...", "yellow"))

@@ -30,6 +30,9 @@
     </item>
     <item>
      <widget class="QTextEdit" name="textEdit">
+      <property name="toolTip">
+       <string>Default log goes here</string>
+      </property>
       <property name="textInteractionFlags">
        <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
       </property>
@@ -44,6 +47,9 @@
     </item>
     <item>
      <widget class="QLineEdit" name="namepath">
+      <property name="toolTip">
+       <string>Path to the namevariation worldist (e.g. ./wordlist.txt)</string>
+      </property>
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
@@ -51,6 +57,9 @@
     </item>
     <item>
      <widget class="QCheckBox" name="useNameVar">
+      <property name="toolTip">
+       <string>Use the namevariation feature. (Set wordlist above)</string>
+      </property>
       <property name="text">
        <string>Wordlisted namevariation</string>
       </property>
@@ -58,6 +67,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="plainListRadio">
+      <property name="toolTip">
+       <string>Default output method only to the window above.</string>
+      </property>
       <property name="text">
        <string>Simple Output</string>
       </property>
@@ -68,6 +80,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="textFileRadio">
+      <property name="toolTip">
+       <string>Output to a .txt file. (File will be at ./[NAME].txt)</string>
+      </property>
       <property name="text">
        <string>To .txt file</string>
       </property>
@@ -75,6 +90,9 @@
     </item>
     <item>
      <widget class="QRadioButton" name="jsonFileRadio">
+      <property name="toolTip">
+       <string>Output to a .json file. (File will be at ./[NAME].json)</string>
+      </property>
       <property name="text">
        <string>To .json file</string>
       </property>
@@ -82,6 +100,9 @@
     </item>
     <item>
      <widget class="QCheckBox" name="checkNSFWService">
+      <property name="toolTip">
+       <string>Show NSFW results.</string>
+      </property>
       <property name="text">
        <string>NSFW</string>
       </property>
@@ -89,6 +110,9 @@
     </item>
     <item>
      <widget class="QCheckBox" name="saveHTML">
+      <property name="toolTip">
+       <string>Save content from HTML tag of the requested page. (File will be at ./[FILEPATH])</string>
+      </property>
       <property name="text">
        <string>Save HTML Content of specific Tag</string>
       </property>
@@ -102,7 +126,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="htmlTags"/>
+     <widget class="QLineEdit" name="htmlTags">
+      <property name="toolTip">
+       <string>Put wanted HTML tag here. (ONLY INSERT ONE TAG!)</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_2">
@@ -113,6 +141,9 @@
     </item>
     <item>
      <widget class="QLineEdit" name="usernameIn">
+      <property name="toolTip">
+       <string>Enter the username of your victim. Use a name they might use regularily.</string>
+      </property>
       <property name="inputMask">
        <string/>
       </property>
@@ -123,6 +154,9 @@
     </item>
     <item>
      <widget class="QPushButton" name="go">
+      <property name="toolTip">
+       <string>FETCH ME THEIR SOULS!</string>
+      </property>
       <property name="text">
        <string>Start the Hunt</string>
       </property>
@@ -136,7 +170,7 @@
      <x>0</x>
      <y>0</y>
      <width>690</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInformation">

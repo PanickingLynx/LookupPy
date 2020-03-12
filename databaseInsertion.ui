@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>388</width>
-    <height>180</height>
+    <height>207</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,11 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="nameOfSite"/>
+    <widget class="QLineEdit" name="nameOfSite">
+     <property name="toolTip">
+      <string>Name of the site to be added.</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QLabel" name="label_2">
@@ -32,10 +36,17 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="linkToSite"/>
+    <widget class="QLineEdit" name="linkToSite">
+     <property name="toolTip">
+      <string>Link to the Website (e.g. https://example.com/{}) The {} is where the username would be.</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QCheckBox" name="siteIsNSFW">
+     <property name="toolTip">
+      <string>Check this if the site is for Adult audiences.</string>
+     </property>
      <property name="text">
       <string>NSFW Site</string>
      </property>
@@ -43,6 +54,9 @@
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="toolTip">
+      <string/>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>

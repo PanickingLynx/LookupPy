@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\akumapy.ui'
+# Form implementation generated from reading ui file './akumapy.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.14.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -72,7 +72,7 @@ class Ui_QMainWindow(object):
         self.verticalLayout_3.addWidget(self.go)
         QMainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(QMainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 690, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 690, 25))
         self.menubar.setObjectName("menubar")
         self.menuInformation = QtWidgets.QMenu(self.menubar)
         self.menuInformation.setObjectName("menuInformation")
@@ -105,15 +105,26 @@ class Ui_QMainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         QMainWindow.setWindowTitle(_translate("QMainWindow", "AkumaPy | Forensic Search"))
         self.label_4.setText(_translate("QMainWindow", "Log:"))
+        self.textEdit.setToolTip(_translate("QMainWindow", "Default log goes here"))
         self.label_5.setText(_translate("QMainWindow", "Path to namevariation wordlist:"))
+        self.namepath.setToolTip(_translate("QMainWindow", "Path to the namevariation worldist (e.g. ./wordlist.txt)"))
+        self.useNameVar.setToolTip(_translate("QMainWindow", "Use the namevariation feature. (Set wordlist above)"))
         self.useNameVar.setText(_translate("QMainWindow", "Wordlisted namevariation"))
+        self.plainListRadio.setToolTip(_translate("QMainWindow", "Default output method only to the window above."))
         self.plainListRadio.setText(_translate("QMainWindow", "Simple Output"))
+        self.textFileRadio.setToolTip(_translate("QMainWindow", "Output to a .txt file. (File will be at ./[NAME].txt)"))
         self.textFileRadio.setText(_translate("QMainWindow", "To .txt file"))
+        self.jsonFileRadio.setToolTip(_translate("QMainWindow", "Output to a .json file. (File will be at ./[NAME].json)"))
         self.jsonFileRadio.setText(_translate("QMainWindow", "To .json file"))
+        self.checkNSFWService.setToolTip(_translate("QMainWindow", "Show NSFW results."))
         self.checkNSFWService.setText(_translate("QMainWindow", "NSFW"))
+        self.saveHTML.setToolTip(_translate("QMainWindow", "Save content from HTML tag of the requested page. (File will be at ./[FILEPATH])"))
         self.saveHTML.setText(_translate("QMainWindow", "Save HTML Content of specific Tag"))
         self.label_3.setText(_translate("QMainWindow", "HTML Tag (Optional e.g. \"p\" or \"main\")"))
+        self.htmlTags.setToolTip(_translate("QMainWindow", "Put wanted HTML tag here. (ONLY INSERT ONE TAG!)"))
         self.label_2.setText(_translate("QMainWindow", "Username to hunt"))
+        self.usernameIn.setToolTip(_translate("QMainWindow", "Enter the username of your victim. Use a name they might use regularily."))
+        self.go.setToolTip(_translate("QMainWindow", "FETCH ME THEIR SOULS!"))
         self.go.setText(_translate("QMainWindow", "Start the Hunt"))
         self.menuInformation.setTitle(_translate("QMainWindow", "Information"))
         self.menuInsert.setTitle(_translate("QMainWindow", "Insert"))
@@ -121,13 +132,3 @@ class Ui_QMainWindow(object):
         self.creditsTrigger.setText(_translate("QMainWindow", "Credits"))
         self.insertionTrigger.setText(_translate("QMainWindow", "Insert new link"))
         self.onTor.setText(_translate("QMainWindow", "Enable Tor Circuit"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    QMainWindow = QtWidgets.QMainWindow()
-    ui = Ui_QMainWindow()
-    ui.setupUi(QMainWindow)
-    QMainWindow.show()
-    sys.exit(app.exec_())

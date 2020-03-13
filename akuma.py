@@ -22,6 +22,8 @@ from ui import Ui_QMainWindow
 from databaseInsertion import Ui_databaseInsertion
 from termcolor import colored
 
+
+
 def osDetection():
     #Get current OS
     currentSystem = platform.system()
@@ -35,8 +37,10 @@ def osDetection():
         input("Press RETURN to exit")
         exit()
 
+
 #Detect the current OS
 osDetection()
+
 
 #Make a local class for the main Window
 class AppWindow(QMainWindow):
@@ -46,6 +50,7 @@ class AppWindow(QMainWindow):
         self.ui.setupUi(self)
         self.show()
 
+
 #Make a local class for the Database insertion window
 class DBInsertion(QDialog):
     def __init__(self):
@@ -54,10 +59,12 @@ class DBInsertion(QDialog):
         self.databaseInsertion.setupUi(self)
         self.show()
 
+
 #Error list for missing indicators
 errorList = open("./errorlist.txt")
 #Stringify the List to compare the words on the page with the list 
 errorListString = str(errorList)
+
 
 #Get a new tor Proxy session
 def newTorSession():
@@ -72,10 +79,12 @@ def newTorSession():
 #Get the new session
 session = newTorSession()
 
+
 #Set the looks of the main UI
 app = QApplication(sys.argv)
 app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 app.setWindowIcon(QtGui.QIcon("./mainicon.png"))
+
 
 #Set the looks of the DB Insertion Window
 insertion = QApplication(sys.argv)
@@ -87,20 +96,24 @@ d = DBInsertion()
 
 w = AppWindow()
 
+
 #Connect to Database and get the collection
 MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
 MyDB = MyClient["AkumaPy"]
 mycol = MyDB["links"]
 print(colored("Getting current MongoDB state...", "yellow"))
 
+
 #Mainloop rebound
 def trigger():
     print(colored("Waiting for another run...", "yellow"))
+
 
 #Open the Database insertion Windows
 def insertToDatabase():
     d.show()
     print(colored("Showing database insertion...", "green"))
+
 
 #Insert the userdata to the Database
 def push():
@@ -126,6 +139,7 @@ def push():
     colored("Inserted!", "green")
     #Rebound to "mainloop"
     trigger()
+
 
 #Namevariation function to read the wordlist of possible prefixes and suffixes for names
 def namevariation(name, field):
@@ -355,6 +369,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
         return output
 
 
+
 def showCredits():
     #Build and show the credits window
     print(colored("Showing credits... THANKS FOR TAKING A LOOK <3", "green"))
@@ -368,6 +383,7 @@ def showCredits():
     if retval == msg.Ok:
         trigger()
         print(colored("Have fun using!", "green"))
+
 
 #Connect all buttons in the application
 d.accepted.connect(lambda: push())

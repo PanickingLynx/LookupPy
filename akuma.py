@@ -61,9 +61,12 @@ class DBInsertion(QDialog):
 
 
 #Error list for missing indicators
-errorList = open("./errorlist.txt")
-#Stringify the List to compare the words on the page with the list 
-errorListString = str(errorList)
+try:
+    errorList = open("./errorlist.txt")
+    #Stringify the List to compare the words on the page with the list 
+    errorListString = str(errorList)
+except FileNotFoundError:
+    sys.exit("errorlist.txt has not been found in the cwd, please make it by 'touch ./errorlist.txt'.")
 
 
 #Get a new tor Proxy session
@@ -305,10 +308,13 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
         print(colored("Parsing HTML...", "yellow"))
         soup = BeautifulSoup(page.text, 'html.parser')
         print(colored("Looking for title...", "yellow"))
-        status = soup.find('title').extract()
-        print(colored("Lowering title...", "yellow"))
-        #Get the current html title to a parsable format
-        status = status.text.lower()
+        try:
+            status = soup.find('title').extract()
+            print(colored("Lowering title...", "yellow"))
+            #Get the current html title to a parsable format
+            status = status.text.lower()
+        except ValueError:
+            print("Non-Valid title found... Skipping...")
 
         if w.ui.saveHTML.isChecked():
             print(colored("Saving to HTML document...", "yellow"))
@@ -323,7 +329,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             htmlFile.close()
 
         if status is not None:
-            print(colored("Found active HTTP Status code...", "yellow"))
+            print(colored("Found active HTML Document...", "yellow"))
             #If the website gave back a HTTP Status code, check for words suspicious of a missing page
             if status in errorListString:
                 print(colored("Guessing that page may not exist...", "yellow"))

@@ -242,8 +242,7 @@ def hunt():
             if w.ui.checkNSFWService.isChecked() != True and wtype == 1:
                 #If its not friendly, censor all nsfw results
                 print(colored("Censoring one result... Guess you're at work... Or in China...", "red"))
-                output = output + "--------------------\n"
-                output = output + "\nCENSORED\n"
+                output = output + "--------------------\n" + "\nCENSORED\n"
                 z = z + 1
             #Continue as per usual
             else:
@@ -265,9 +264,7 @@ def hunt():
                     print(colored("DONE!", "green"))
                 #Sample the output with the recieved variables
                 print(colored("Collecting new sampled output data...", "yellow"))
-                output = output + "--------------------\n"
-                output = output + "\n" + wname + "\n"
-                output = output + mainlink[z] + "\n"
+                output = output + "--------------------\n" + "\n" + wname + "\n"+ mainlink[z] + "\n"
                 print(colored("Translating statuscode....", "yellow"))
                 #Add the current HTTP Status code and translate it to User readable
                 output = statuscheck(req, output, mainlink, pathToLog, mainname)

@@ -310,7 +310,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
             print(colored("Lowering title...", "yellow"))
             #Get the current html title to a parsable format
             status = status.text.lower()
-        except ValueError:
+        except AttributeError:
             print("Non-Valid title found... Skipping...")
 
         if w.ui.saveHTML.isChecked():

@@ -4,8 +4,8 @@ import os
 import sys
 
 #Check if the user is root
-if not os.geteuid()==0:
-    sys.exit('This script must be run as root!')
+'''if not os.geteuid()==0:
+    sys.exit('This script must be run as root!')'''
 
 #Import the rest of the modules
 import json
@@ -24,7 +24,7 @@ from termcolor import colored
 
 
 
-def osDetection():
+'''def osDetection():
     #Get current OS
     currentSystem = platform.system()
     #Exit if either is true
@@ -39,7 +39,7 @@ def osDetection():
 
 
 #Detect the current OS
-osDetection()
+osDetection()'''
 
 
 #Make a local class for the main Window
@@ -119,6 +119,14 @@ def insertToDatabase():
 
 
 #Insert the userdata to the Database
+def countLines(path):
+    count = 0
+    with open(path, 'r') as f:
+       for line in f:
+          count += 1
+    return count
+
+
 def push():
     #Get the name and the link
     siteName = d.databaseInsertion.nameOfSite.text()
@@ -157,26 +165,31 @@ def namevariation(name, field):
         trigger()
     #Open the file
     path = open(w.ui.namepath.text(), "r")
+    lengthOfFile = countLines(w.ui.namepath.text())
     lines = path.readlines()
     x = 0
+    z = 0
     prefix = ""
     suffix = ""
     #Get all prefixes and suffixes
     for i in lines:
         newname.insert(x, prefix + name + suffix)
         x = x + 1
-        if ";" in lines[x]:
+
+        if ";" in lines[z]:
             #This is a suffix
-            suffix = lines[x]
+            suffix = lines[z]
             newname.insert(x, name + suffix)
             print(colored("Found a suffix...", "yellow"))
-            x = x + 1
-        if "*" in lines[x]:
+        if "*" in lines[z]:
             #This is a prefix
-            prefix = lines[x]
+            prefix = lines[z]
             print(colored("Found a prefix...", "yellow"))
             newname.insert(x, prefix + name)
-            x = x + 1
+        x = x + 1
+        z = z + 1
+        if z > lengthOfFile:
+            z = lengthOfFile
 
     y = 0
     for i in newname:

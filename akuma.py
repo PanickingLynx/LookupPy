@@ -159,42 +159,41 @@ def namevariation(name, field):
     path = open(w.ui.namepath.text(), "r")
     lines = path.readlines()
     x = 0
-    y = 0
     prefix = ""
     suffix = ""
     #Get all prefixes and suffixes
     for i in lines:
+        newname.insert(x, prefix + name + suffix)
+        x = x + 1
         if ";" in lines[x]:
             #This is a suffix
             suffix = lines[x]
+            newname.insert(x, name + suffix)
             print(colored("Found a suffix...", "yellow"))
-        elif "*" in lines[x]:
+            x = x + 1
+        if "*" in lines[x]:
             #This is a prefix
             prefix = lines[x]
             print(colored("Found a prefix...", "yellow"))
-        newname.insert(x, prefix + name + suffix)
+            newname.insert(x, prefix + name)
+            x = x + 1
+
+    y = 0
+    for i in newname:
         carded = field["link"].format(newname[y])
         modified = re.sub("\s", "", carded)
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
         respaced.insert(x, re.sub("\n", "", modified))
-        print(colored("Making one name...", "yellow"))
-        x = x + 1
-        y = y + 1
+        print(colored("Formatting one link...", "yellow"))
 
-    x = x - 1
-    y = y - 1
-    #Only add a suffix
-    if ";" in lines[x]:
-        suffix = lines[x]
-    print(colored("Mutating the name...", "yellow"))
-    newname.insert(x, name + suffix)
-    carded = field["link"].format(newname[y])
-    modified = re.sub("\s", "", carded)
-    modified = re.sub(re.escape("*"), "", modified)
-    modified = re.sub(re.escape(";"), "", modified)
-    respaced.insert(x, re.sub("\n", "", modified))
-    print(colored("DONE!", "green"))
+        carded = field["link"].format(newname[y])
+        modified = re.sub("\s", "", carded)
+        modified = re.sub(re.escape("*"), "", modified)
+        modified = re.sub(re.escape(";"), "", modified)
+        respaced.insert(x, re.sub("\n", "", modified))
+        print(colored("DONE! Formatted another link!", "green"))
+        y = y + 1
     return respaced
 
 

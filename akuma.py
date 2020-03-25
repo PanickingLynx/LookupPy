@@ -145,7 +145,7 @@ def push():
 
 
 #Namevariation function to read the wordlist of possible prefixes and suffixes for names
-def namevariation(name, field):
+def namevariation(name):
     respaced = []
     newname = []
     #Get the path for the wordlist
@@ -173,8 +173,7 @@ def namevariation(name, field):
             prefix = lines[x]
             print(colored("Found a prefix...", "yellow"))
         newname.insert(x, prefix + name + suffix)
-        carded = field["link"].format(newname[y])
-        modified = re.sub("\s", "", carded)
+        modified = re.sub("\s", "", newname[x])
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
         respaced.insert(x, re.sub("\n", "", modified))
@@ -189,8 +188,7 @@ def namevariation(name, field):
         suffix = lines[x]
     print(colored("Mutating the name...", "yellow"))
     newname.insert(x, name + suffix)
-    carded = field["link"].format(newname[y])
-    modified = re.sub("\s", "", carded)
+    modified = re.sub("\s", "", newname[x])
     modified = re.sub(re.escape("*"), "", modified)
     modified = re.sub(re.escape(";"), "", modified)
     respaced.insert(x, re.sub("\n", "", modified))
@@ -218,7 +216,7 @@ def hunt():
             #Mutate the name
             print(colored("Adding namevariation parameter... LETS MUTATE!", "green"))
             mainname.clear()
-            mainname = namevariation(name, field)
+            mainname = namevariation(name)
         #If namevariation is not wanted
         else:
             #Skip
@@ -230,7 +228,7 @@ def hunt():
             if w.ui.useNameVar.isChecked():
                 #Get all links
                 print(colored("Starting namevariation...", "yellow"))
-                mainlink = namevariation(name, field)
+                mainlink.insert(z, field["link"].format(mainname[z]))
             else:
                 #If no variation only get one link
                 mainlink.clear()

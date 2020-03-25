@@ -119,14 +119,6 @@ def insertToDatabase():
 
 
 #Insert the userdata to the Database
-def countLines(path):
-    count = 0
-    with open(path, 'r') as f:
-       for line in f:
-          count += 1
-    return count
-
-
 def push():
     #Get the name and the link
     siteName = d.databaseInsertion.nameOfSite.text()
@@ -165,32 +157,29 @@ def namevariation(name):
         trigger()
     #Open the file
     path = open(w.ui.namepath.text(), "r")
-    lengthOfFile = countLines(w.ui.namepath.text())
     lines = path.readlines()
     x = 0
-    z = 0
+    y = 0
     prefix = ""
     suffix = ""
     #Get all prefixes and suffixes
     for i in lines:
-        newname.insert(x, prefix + name + suffix)
-        x = x + 1
-
-        if ";" in lines[z]:
+        if ";" in lines[x]:
             #This is a suffix
-            suffix = lines[z]
-            newname.insert(x, name + suffix)
+            suffix = lines[x]
             print(colored("Found a suffix...", "yellow"))
-        if "*" in lines[z]:
+        elif "*" in lines[x]:
             #This is a prefix
-            prefix = lines[z]
+            prefix = lines[x]
             print(colored("Found a prefix...", "yellow"))
         newname.insert(x, prefix + name + suffix)
         modified = re.sub("\s", "", newname[x])
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
         respaced.insert(x, re.sub("\n", "", modified))
-        print(colored("Formatting one link...", "yellow"))
+        print(colored("Making one name...", "yellow"))
+        x = x + 1
+        y = y + 1
 
     x = x - 1
     y = y - 1

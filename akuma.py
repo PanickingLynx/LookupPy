@@ -4,8 +4,8 @@ import os
 import sys
 
 #Check if the user is root
-'''if not os.geteuid()==0:
-    sys.exit('This script must be run as root!')'''
+if not os.geteuid()==0:
+    sys.exit('This script must be run as root!')
 
 #Import the rest of the modules
 import json
@@ -24,7 +24,7 @@ from termcolor import colored
 
 
 
-'''def osDetection():
+def osDetection():
     #Get current OS
     currentSystem = platform.system()
     #Exit if either is true
@@ -39,7 +39,7 @@ from termcolor import colored
 
 
 #Detect the current OS
-osDetection()'''
+osDetection()
 
 
 #Make a local class for the main Window

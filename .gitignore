@@ -159,3 +159,4 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/text,python,windows,visualstudiocode
 .vscode/settings.json
+testlist.txt

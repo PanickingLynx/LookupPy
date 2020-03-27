@@ -35,11 +35,11 @@ It contains multiple areas of programming like Databases, GUI Design and Web-Dev
 ### How do I set it up?
 
 To setup AkumaPy, you must have Tor installed and the SOCKS Port must be configured.
-You can do this like so (as root):
+You can do this like so:
 ```
-apt install tor
-service tor start
-nano /etc/tor/torrc
+sudo apt install tor
+sudo service tor start
+sudo nano /etc/tor/torrc
 ```
 
 In here we uncomment the Lines:
@@ -53,20 +53,20 @@ Now we will install the MongoDB Server.
 Get it from [mongodb.com](https://www.mongodb.com/ "MongoDB")
 Find the server and run (as root):
 ```
-dpkg -i ./the_downloaded_deb
-service mongod start
+sudo dpkg -i ./the_downloaded_deb
+sudo service mongod start
 ```
 If there are errors restart your machine.
 
 Next run (as root):
 ```
-service tor restart
+sudo service tor restart
 cd /where_you_saved_the_tool/
-pip3 install -r ./requirements.txt
-python3 ./akuma.py
+sudo pip3 install -r ./requirements.txt
+sudo python3 ./akuma.py
 ```
 Then you are done.
-Warning! The Tool will only work under Linux and as root!
+Warning! The Tool will only work under Linux and with sudo! (For some reason there are errors when run directly from root)
 If there are errors with my instructions let me know!
 
 ### How does it work?
@@ -127,6 +127,7 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - bs4 
 - PyQt5
 - qdarkstyle
+- pysocks
 
 ### Planned features
 

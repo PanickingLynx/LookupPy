@@ -159,7 +159,6 @@ def namevariation(name):
     path = open(w.ui.namepath.text(), "r")
     lines = path.readlines()
     x = 0
-    y = 0
     prefix = ""
     suffix = ""
     #Get all prefixes and suffixes
@@ -179,10 +178,8 @@ def namevariation(name):
         respaced.insert(x, re.sub("\n", "", modified))
         print(colored("Making one name...", "yellow"))
         x = x + 1
-        y = y + 1
 
     x = x - 1
-    y = y - 1
     #Only add a suffix
     if ";" in lines[x]:
         suffix = lines[x]

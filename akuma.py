@@ -1,28 +1,7 @@
 # -*- coding: utf-8 -*-
 #Import basic system functions
-import os
-import sys
-
-#Check if the user is root
-if not os.geteuid()==0:
-    sys.exit('This script must be run as root!')
-
-#Import the rest of the modules
-import json
-import re
 import platform
-import requests
-import pymongo
-from bs4 import BeautifulSoup
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog
-from PyQt5 import QtGui
-from PyQt5.QtGui import QPixmap
-import qdarkstyle
-from ui import Ui_QMainWindow
-from databaseInsertion import Ui_databaseInsertion
 from termcolor import colored
-
-
 
 def osDetection():
     #Get current OS
@@ -41,6 +20,25 @@ def osDetection():
 #Detect the current OS
 osDetection()
 
+import os
+import sys
+
+#Check if the user is root
+if not os.geteuid()==0:
+    sys.exit('This script must be run as root!')
+
+#Import the rest of the modules
+import json
+import re
+import requests
+import pymongo
+from bs4 import BeautifulSoup
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog
+from PyQt5 import QtGui
+from PyQt5.QtGui import QPixmap
+import qdarkstyle
+from ui import Ui_QMainWindow
+from databaseInsertion import Ui_databaseInsertion
 
 #Make a local class for the main Window
 class AppWindow(QMainWindow):

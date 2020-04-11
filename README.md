@@ -143,5 +143,5 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 
 ### Additional Credits
 
-- Maze aka. Black_eks for creating the tools icon. [Instagram](https://www.instagram.com/black_eks/)
+- Maze aka. Black_eks for creating the tools icon. [Instagram](https://instagram.com/borky.exe/)
 - Doelicious for letting me use her username extensively for testing purposes. [Twitter](https://www.twitter.com/Doelici0us/)

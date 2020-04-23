@@ -23,9 +23,12 @@ osDetection()
 import os
 import sys
 
-#Check if the user is root
-if not os.geteuid()==0:
-    sys.exit('This script must be run as root!')
+def rootDetection():
+    #Check if the user is root
+    if not os.geteuid()==0:
+        sys.exit('This script must be run as root!')
+
+rootDetection()
 
 #Import the rest of the modules
 import json
@@ -64,7 +67,7 @@ try:
     #Stringify the List to compare the words on the page with the list 
     errorListString = str(errorList)
 except FileNotFoundError:
-    sys.exit("errorlist.txt has not been found in the cwd, please make it by 'touch ./errorlist.txt'.")
+    sys.exit("errorlist.txt has not been found in the cwd, please create it by running the command 'touch ./errorlist.txt'.")
 
 
 #Get a new tor Proxy session
@@ -99,9 +102,9 @@ w = AppWindow()
 
 
 #Connect to Database and get the collection
-MyClient = pymongo.MongoClient("mongodb://localhost:27017/")
-MyDB = MyClient["AkumaPy"]
-mycol = MyDB["links"]
+MDBConn = pymongo.MongoClient("mongodb://localhost:27017/")
+CurrentDB = MDBConn["AkumaPy"]
+CurrentCollection = CurrentDB["links"]
 print(colored("Getting current MongoDB state...", "yellow"))
 
 
@@ -136,7 +139,7 @@ def push():
         }
     print(colored("Inserting new JSON to database...", "yellow"))
     #Insert to the Database
-    mycol.insert_one(newsite)
+    CurrentCollection.insert_one(newsite)
     colored("Inserted!", "green")
     #Rebound to "mainloop"
     trigger()
@@ -203,7 +206,7 @@ def hunt():
     pathToLog = "./{}.txt".format(w.ui.usernameIn.text())
     print(colored("Starting the hunt...", "green"))
     #Start grabbing links from the Database
-    for field in mycol.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
+    for field in CurrentCollection.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         print(colored("Grabbing one dataset from the database....", "yellow"))
         z = 0
         #If namevariation is wanted

@@ -3,6 +3,7 @@ missing
 oops
 removed
 nicht gefunden
+nicht verfügbar
 fehlt
 ups
 entfernt

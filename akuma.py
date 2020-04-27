@@ -11,7 +11,7 @@ def osDetection():
         print(colored("WRONG OPERATING SYSTEM! PLEASE USE LINUX!", "red"))
         input("Press RETURN to exit")
         exit()
-    if currentSystem == "Darwin":
+    elif currentSystem == "Darwin":
         print(colored("WRONG OPERATING SYSTEM! PLEASE USE LINUX!", "red"))
         input("Press RETURN to exit")
         exit()

@@ -1,47 +1,23 @@
 # -*- coding: utf-8 -*-
 #Import basic system functions
-import platform
-from termcolor import colored
-
-def osDetection():
-    #Get current OS
-    currentSystem = platform.system()
-    #Exit if either is true
-    if currentSystem == "Windows":
-        print(colored("WRONG OPERATING SYSTEM! PLEASE USE LINUX!", "red"))
-        input("Press RETURN to exit")
-        exit()
-    elif currentSystem == "Darwin":
-        print(colored("WRONG OPERATING SYSTEM! PLEASE USE LINUX!", "red"))
-        input("Press RETURN to exit")
-        exit()
-
-
-#Detect the current OS
-osDetection()
-
-import os
 import sys
-
-def rootDetection():
-    #Check if the user is root
-    if not os.geteuid()==0:
-        sys.exit('This script must be run as root!')
-
-rootDetection()
-
-#Import the rest of the modules
 import json
 import re
+from termcolor import colored
 import requests
 import pymongo
-from bs4 import BeautifulSoup
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt5 import QtGui
-from PyQt5.QtGui import QPixmap
 import qdarkstyle
 from ui import Ui_QMainWindow
 from databaseInsertion import Ui_databaseInsertion
+from submodules import testForErrors
+from submodules import getTorSession
+from submodules import status
+from submodules import showCredits
+
+errorListString = testForErrors.testAll()
+newProxy = getTorSession.newTorSession()
 
 #Make a local class for the main Window
 class AppWindow(QMainWindow):
@@ -60,29 +36,8 @@ class DBInsertion(QDialog):
         self.databaseInsertion.setupUi(self)
         self.show()
 
-
-#Error list for missing indicators
-try:
-    errorList = open("./errorlist.txt")
-    #Stringify the List to compare the words on the page with the list 
-    errorListString = str(errorList)
-except FileNotFoundError:
-    sys.exit("errorlist.txt has not been found in the cwd, please create it by running the command 'touch ./errorlist.txt'.")
-
-
-#Get a new tor Proxy session
-def newTorSession():
-    #Create a session
-    newProxy = requests.session()
-    #Define the session
-    newProxy.proxies = { 'http': 'socks5h://localhost:9050',
-                        'https': 'socks5h://localhost:9050'}
-    print(colored("Starting a new Tor proxy session....", "magenta"))
-    return newProxy
-
 #Get the new session
-session = newTorSession()
-
+session = getTorSession.newTorSession()
 
 #Set the looks of the main UI
 app = QApplication(sys.argv)
@@ -106,11 +61,6 @@ MDBConn = pymongo.MongoClient("mongodb://localhost:27017/")
 CurrentDB = MDBConn["AkumaPy"]
 CurrentCollection = CurrentDB["links"]
 print(colored("Getting current MongoDB state...", "yellow"))
-
-
-#Mainloop rebound
-def trigger():
-    print(colored("Waiting for another run...", "yellow"))
 
 
 #Open the Database insertion Windows
@@ -141,9 +91,6 @@ def push():
     #Insert to the Database
     CurrentCollection.insert_one(newsite)
     colored("Inserted!", "green")
-    #Rebound to "mainloop"
-    trigger()
-
 
 #Namevariation function to read the wordlist of possible prefixes and suffixes for names
 def namevariation(name):
@@ -155,7 +102,6 @@ def namevariation(name):
         w.ui.textEdit.clear()
         w.ui.textEdit.setText("ERROR. Please give a path to a .txt File for\n automatic name variation.\n")
         print(colored("ERROR! Exiting namevariation check....", "red"))
-        trigger()
     #Open the file
     path = open(w.ui.namepath.text(), "r")
     lines = path.readlines()
@@ -246,7 +192,7 @@ def hunt():
                 if w.ui.onTor.isChecked():
                     #Get the html with the Proxy session
                     print(colored("Getting new Tor session... Let's go dark...", "magenta"))
-                    session = newTorSession()
+                    session = getTorSession.newTorSession()
                     print(colored("Getting anonymous request.... Getting statuscode", "yellow"))
                     #Get the current HTTP status code
                     req = session.get(mainlink[z]).status_code
@@ -263,131 +209,15 @@ def hunt():
                 output = output + "--------------------\n" + "\n" + wname + "\n"+ mainlink[z] + "\n"
                 print(colored("Translating statuscode....", "yellow"))
                 #Add the current HTTP Status code and translate it to User readable
-                output = statuscheck(req, output, mainlink, pathToLog, mainname)
+                output = status.statuscheck(req, output, mainlink, pathToLog, mainname)
+                w.ui.textEdit.setText(output)
                 z = z + 1
-
-
-
-def statuscheck(req, output, mainlink, pathToLog, mainname):
-    y = 0
-    #Translate the statuscode
-    for i in mainlink:
-        print(colored(mainlink[y], "cyan"))
-        print(colored("Testing....", "yellow"))
-        if req == 200:
-            output = output + "200 OK!\n"
-        elif req == 503:
-            output = output + "503 ERROR!\n"
-        elif req == 403:
-            output = output + "403 DENIED!\n"
-        elif req == 404:
-            output = output + "404 MISSING!\n"
-        elif req == 301:
-            output = output + "301 MOVED!\n"
-        else:
-            output = output + "TIMEOUT OR DOWN!\n"
-        print(colored("DONE!", "green"))
-        if w.ui.onTor.isChecked():
-            print(colored("Getting new Tor session... Let's go dark... (again)", "magenta"))
-            session = newTorSession()
-            print(colored("Getting HTML document anonymously....", "yellow"))
-            page = session.get(mainlink[y])
-            print(colored("DONE!", "green"))
-        else:
-            print(colored("Getting HTML document...", "yellow"))
-            page = requests.get(mainlink[y])
-            print(colored("DONE!", "green"))
-        #Look for Data suspicious of a missing profile in the html document
-        print(colored("Parsing HTML...", "yellow"))
-        soup = BeautifulSoup(page.text, 'html.parser')
-        print(colored("Looking for title...", "yellow"))
-        try:
-            status = soup.find('title').extract()
-            print(colored("Lowering title...", "yellow"))
-            #Get the current html title to a parsable format
-            status = status.text.lower()
-        except AttributeError:
-            print("Non-Valid title found... Skipping...")
-
-        if w.ui.saveHTML.isChecked():
-            print(colored("Saving to HTML document...", "yellow"))
-            #Save data from custom html tag given from UI if the option is checked
-            htmlFile = open("./{}.html".format(w.ui.usernameIn.text()), "a")
-            #Get the html text
-            soup2 = BeautifulSoup(page.text, 'html.parser')
-            deeptext = w.ui.htmlTags.text()
-            htmltext = soup2.find(deeptext).extract()
-            htmlFile.write(str(htmltext))
-            print(colored("DONE!", "green"))
-            htmlFile.close()
-
-        if status is not None:
-            print(colored("Found active HTML Document...", "yellow"))
-            #If the website gave back a HTTP Status code, check for words suspicious of a missing page
-            if status in errorListString:
-                print(colored("Guessing that page may not exist...", "yellow"))
-                output = output + "FAILED TO FIND!\n"
-                hit = "bad"
-            else:
-                print(colored("Guessing that page probably exists...", "yellow"))
-                output = output + "PROBABLY EXISTS!\n"
-                hit = "good"
-        else:
-            print(colored("FATAL ERROR! Server might be down...", "red"))
-            output = output + "EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?\n"
-            hit = "error"
-        y = y + 1
-        #Give output to the main Log field
-        print(colored("Outputting data....", "yellow"))
-        w.ui.textEdit.setText(output)
-        #Write to a textfile if wanted
-        if w.ui.textFileRadio.isChecked():
-            print(colored("Writing to textfile in root directory...", "yellow"))
-            outFileText = open(pathToLog, "w")
-            outFileText.write(output)
-            outFileText.close()
-            print(colored("DONE!", "green"))
-        #Output to json if wanted
-        if w.ui.jsonFileRadio.isChecked():
-            print(colored("Writing to JSON file in root directory...", "yellow"))
-            toJSON = {
-                "username": mainname,
-                "link": mainlink,
-                "site_status": req,
-                "hit": hit
-            }
-            textJSON = json.dumps(toJSON)
-            textJSON = textJSON + "\n"
-            textJSON = re.sub(", ", ", \n", textJSON)
-            textJSON = re.sub("{", "{\n", textJSON)
-            textJSON = re.sub("}", "\n}", textJSON)
-            jfile = open(pathToLog, "a")
-            jfile.write(textJSON)
-            jfile.close()
-            print(colored("DONE!", "green"))
-        return output
-
-
-
-def showCredits():
-    #Build and show the credits window
-    print(colored("Showing credits... THANKS FOR TAKING A LOOK <3", "green"))
-    msg = QMessageBox()
-    msg.setIconPixmap(QPixmap("./mainicon.png"))
-    msg.setText("People who showed me their Support:")
-    msg.setWindowTitle("Credits")
-    msg.setInformativeText("- Doelicious (Testing) \n- Maze aka. Black_eks (Script Icon artwork)\n")
-    msg.setEscapeButton(msg.Ok)
-    retval = msg.exec()
-    if retval == msg.Ok:
-        trigger()
-        print(colored("Have fun using!", "green"))
 
 
 #Connect all buttons in the application
 d.accepted.connect(lambda: push())
-d.rejected.connect(lambda: trigger())
-w.ui.creditsTrigger.triggered.connect(lambda: showCredits())
+d.rejected.connect(lambda: d.hide())
+w.ui.creditsTrigger.triggered.connect(lambda: showCredits.showCredits())
 w.ui.insertionTrigger.triggered.connect(lambda: insertToDatabase())
 w.ui.go.clicked.connect(lambda: hunt())
 #Display Windows

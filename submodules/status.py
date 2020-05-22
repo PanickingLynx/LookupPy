@@ -4,11 +4,11 @@ import json
 import sys
 from termcolor import colored
 from bs4 import BeautifulSoup
-from ui import Ui_QMainWindow
-from databaseInsertion import Ui_databaseInsertion
+from AkumaPy.ui import Ui_QMainWindow
+from AkumaPy.databaseInsertion import Ui_databaseInsertion
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
-from submodules import getTorSession
-from submodules import testForErrors
+import getTorSession
+import testForErrors
 
 #Make a local class for the main Window
 class AppWindow(QMainWindow):

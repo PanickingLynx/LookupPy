@@ -2,13 +2,14 @@ import requests
 import re
 import json
 import sys
+sys.path.append("..")
 from termcolor import colored
 from bs4 import BeautifulSoup
-from AkumaPy.ui import Ui_QMainWindow
-from AkumaPy.databaseInsertion import Ui_databaseInsertion
+from submodules.ui import Ui_QMainWindow
+from submodules.databaseInsertion import Ui_databaseInsertion
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
-import getTorSession
-import testForErrors
+import submodules.getTorSession as getTorSession
+import submodules.testForErrors as testForErrors
 
 #Make a local class for the main Window
 class AppWindow(QMainWindow):
@@ -34,7 +35,7 @@ d = DBInsertion()
 
 w = AppWindow()
 
-def statuscheck(req, output, mainlink, pathToLog, mainname):
+def statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod):
     y = 0
     #Translate the statuscode
     for i in mainlink:
@@ -106,14 +107,14 @@ def statuscheck(req, output, mainlink, pathToLog, mainname):
         #Give output to the main Log field
         print(colored("Outputting data....", "yellow"))
         #Write to a textfile if wanted
-        if w.ui.textFileRadio.isChecked():
+        if loggingMethod == "PLAINTEXT":
             print(colored("Writing to textfile in root directory...", "yellow"))
             outFileText = open(pathToLog, "w")
             outFileText.write(output)
             outFileText.close()
             print(colored("DONE!", "green"))
         #Output to json if wanted
-        if w.ui.jsonFileRadio.isChecked():
+        elif loggingMethod == "JSON":
             print(colored("Writing to JSON file in root directory...", "yellow"))
             toJSON = {
                 "username": mainname,

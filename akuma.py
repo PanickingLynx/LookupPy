@@ -9,12 +9,12 @@ import pymongo
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt5 import QtGui
 import qdarkstyle
-from ui import Ui_QMainWindow
-from databaseInsertion import Ui_databaseInsertion
-from submodules import testForErrors
-from submodules import getTorSession
-from submodules import status
-from submodules import showCredits
+from submodules.ui import Ui_QMainWindow
+from submodules.databaseInsertion import Ui_databaseInsertion
+import submodules.testForErrors as testForErrors
+import submodules.getTorSession as getTorSession
+import submodules.status as status
+import submodules.showCredits as showCredits
 
 errorListString = testForErrors.testAll()
 newProxy = getTorSession.newTorSession()
@@ -143,13 +143,12 @@ def namevariation(name):
 
 def hunt():
     #Main block
+    print(w.ui.jsonFileRadio.isChecked())
     mainname = []
     mainlink = []
     #Get the username
     name = w.ui.usernameIn.text()
     output = ""
-    #Create a path for logging
-    pathToLog = "./{}.txt".format(w.ui.usernameIn.text())
     print(colored("Starting the hunt...", "green"))
     #Start grabbing links from the Database
     for field in CurrentCollection.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
@@ -209,7 +208,13 @@ def hunt():
                 output = output + "--------------------\n" + "\n" + wname + "\n"+ mainlink[z] + "\n"
                 print(colored("Translating statuscode....", "yellow"))
                 #Add the current HTTP Status code and translate it to User readable
-                output = status.statuscheck(req, output, mainlink, pathToLog, mainname)
+                if w.ui.jsonFileRadio.isChecked():
+                    pathToLog = "./{}.json".format(w.ui.usernameIn.text())
+                    loggingMethod = "JSON"
+                if w.ui.textFileRadio.isChecked():
+                    pathToLog = "./{}.txt".format(w.ui.usernameIn.text())
+                    loggingMethod = "PLAINTEXT"
+                output = status.statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod)
                 w.ui.textEdit.setText(output)
                 z = z + 1
 

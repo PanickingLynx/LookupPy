@@ -2,7 +2,6 @@ import requests
 import re
 import json
 import sys
-sys.path.append("..")
 from termcolor import colored
 from bs4 import BeautifulSoup
 from submodules.ui import Ui_QMainWindow

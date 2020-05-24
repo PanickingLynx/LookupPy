@@ -211,9 +211,12 @@ def hunt():
                 if w.ui.jsonFileRadio.isChecked():
                     pathToLog = "./{}.json".format(w.ui.usernameIn.text())
                     loggingMethod = "JSON"
-                if w.ui.textFileRadio.isChecked():
+                elif w.ui.textFileRadio.isChecked():
                     pathToLog = "./{}.txt".format(w.ui.usernameIn.text())
                     loggingMethod = "PLAINTEXT"
+                else:
+                    pathToLog = "NONE"
+                    loggingMethod = "NONE"
                 output = status.statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod)
                 w.ui.textEdit.setText(output)
                 z = z + 1

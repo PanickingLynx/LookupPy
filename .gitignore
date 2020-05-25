@@ -118,7 +118,6 @@ dmypy.json
 *.rtf
 *.wpd
 *.wps
-*.json
 
 ### VisualStudioCode ###
 .vscode/*

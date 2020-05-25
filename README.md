@@ -8,6 +8,7 @@
 - Why would you want to use AkumaPy?
 - Why was this created?
 - How do I set it up?
+- The mongoconfig.json file.
 - How does it work?
 - What is the JSON Output Syntax?
 - Which Modules were used?
@@ -97,6 +98,24 @@ Then the html of the page will be checked if there is any sign of the profile no
 
 The user can choose to get a plain output, output to a .txt document or JSON format.
 
+### The mongoconfig.json file.
+
+This file configures the connection to the MongoDB Database of your choice.
+The file looks as follows:
+``` 
+{
+    "DatabaseAdress" : "mongodb://localhost:27017",
+    "DatabaseName" : "AkumaPy",
+    "CollectionName" : "links"
+}
+```
+
+DatabaseAdress : IP Adress of the database
+
+DatabaseName : Name of the database
+
+CollectionName : Name of the collection for the websitelinks
+
 ### What is the JSON Output syntax?
 
 ```
@@ -124,7 +143,7 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - os
 - requests
 - pymongo
-- bs4 
+- bs4
 - PyQt5
 - qdarkstyle
 - pysocks

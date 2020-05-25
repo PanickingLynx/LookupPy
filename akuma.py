@@ -36,6 +36,18 @@ class DBInsertion(QDialog):
         self.databaseInsertion.setupUi(self)
         self.show()
 
+#Get Database configuration
+with open("./config/mongoconfig.json") as dbconffile:
+    dbconf = json.load(dbconffile)
+    #Connect to Database and get the collection
+    adress = dbconf["DatabaseAdress"]
+    DBName = dbconf["DatabaseName"]
+    CollectionName = dbconf["CollectionName"]
+    MDBConn = pymongo.MongoClient(adress)
+    CurrentDB = MDBConn[DBName]
+    CurrentCollection = CurrentDB[CollectionName]
+    print(colored("Getting current MongoDB state...", "yellow"))
+
 #Get the new session
 session = getTorSession.newTorSession()
 
@@ -54,14 +66,6 @@ insertion.setWindowIcon(QtGui.QIcon("./mainicon.png"))
 d = DBInsertion()
 
 w = AppWindow()
-
-
-#Connect to Database and get the collection
-MDBConn = pymongo.MongoClient("mongodb://localhost:27017/")
-CurrentDB = MDBConn["AkumaPy"]
-CurrentCollection = CurrentDB["links"]
-print(colored("Getting current MongoDB state...", "yellow"))
-
 
 #Open the Database insertion Windows
 def insertToDatabase():

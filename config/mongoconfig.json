@@ -1,0 +1,5 @@
+{
+    "DatabaseAdress" : "mongodb://localhost:27017",
+    "DatabaseName" : "AkumaPy",
+    "CollectionName" : "links"
+}

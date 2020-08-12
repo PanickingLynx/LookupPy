@@ -3,12 +3,18 @@
 import sys
 import json
 import re
-from termcolor import colored
+
+#Import networking
 import requests
 import pymongo
+
+#Import Styling
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt5 import QtGui
 import qdarkstyle
+from termcolor import colored
+
+#Import other components
 from submodules.ui import Ui_QMainWindow
 from submodules.databaseInsertion import Ui_databaseInsertion
 import submodules.testForErrors as testForErrors
@@ -128,9 +134,9 @@ def namevariation(name):
         modified = re.sub(re.escape(";"), "", modified)
         respaced.insert(x, re.sub("\n", "", modified))
         print(colored("Making one name...", "yellow"))
-        x = x + 1
+        x += 1
 
-    x = x - 1
+    x -= 1
     #Only add a suffix
     if ";" in lines[x]:
         suffix = lines[x]
@@ -184,11 +190,11 @@ def hunt():
             wname = field["name"]
             wtype = field["type"]
             #Is the output NSFW friendly?
-            if w.ui.checkNSFWService.isChecked() != True and wtype == 1:
+            if not w.ui.checkNSFWService.isChecked() and wtype == 1:
                 #If its not friendly, censor all nsfw results
                 print(colored("Censoring one result... Guess you're at work... Or in China...", "red"))
                 output = output + "--------------------\n" + "\nCENSORED\n"
-                z = z + 1
+                z += 1
             #Continue as per usual
             else:
                 #If the request uses onion routing
@@ -223,7 +229,7 @@ def hunt():
                     loggingMethod = "NONE"
                 output = status.statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod)
                 w.ui.textEdit.setText(output)
-                z = z + 1
+                z += 1
 
 
 #Connect all buttons in the application

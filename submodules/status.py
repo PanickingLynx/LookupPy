@@ -103,7 +103,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod):
             print(colored("FATAL ERROR! Server might be down...", "red"))
             output = output + "EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?\n"
             hit = "error"
-        y = y + 1
+        y += 1
         #Give output to the main Log field
         print(colored("Outputting data....", "yellow"))
         #Write to a textfile if wanted

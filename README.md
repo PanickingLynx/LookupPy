@@ -158,6 +158,7 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - ~~Adding Tor routing and privacy options~~ [Finished]
 - ~~Colored terminal output by type~~ [Finished]
 - ~~OS detection so the tool only runs on Linux and as root~~ [Finished]
+- Removing MongoDB dependency and using normal JSON Documents
 
 
 ### Additional Credits

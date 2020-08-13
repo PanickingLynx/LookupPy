@@ -115,37 +115,37 @@ def namevariation(name):
     #Open the file
     path = open(w.ui.namepath.text(), "r")
     lines = path.readlines()
-    x = 0
+    prefixCounter = 0
     prefix = ""
     suffix = ""
     #Get all prefixes and suffixes
     for i in lines:
-        if ";" in lines[x]:
+        if ";" in lines[prefixCounter]:
             #This is a suffix
-            suffix = lines[x]
+            suffix = lines[prefixCounter]
             print(colored("Found a suffix...", "yellow"))
-        elif "*" in lines[x]:
+        elif "*" in lines[prefixCounter]:
             #This is a prefix
-            prefix = lines[x]
+            prefix = lines[prefixCounter]
             print(colored("Found a prefix...", "yellow"))
-        newname.insert(x, prefix + name + suffix)
-        modified = re.sub("\s", "", newname[x])
+        newname.insert(prefixCounter, prefix + name + suffix)
+        modified = re.sub("\s", "", newname[prefixCounter])
         modified = re.sub(re.escape("*"), "", modified)
         modified = re.sub(re.escape(";"), "", modified)
-        respaced.insert(x, re.sub("\n", "", modified))
+        respaced.insert(prefixCounter, re.sub("\n", "", modified))
         print(colored("Making one name...", "yellow"))
-        x += 1
+        prefixCounter += 1
 
-    x -= 1
+    prefixCounter -= 1
     #Only add a suffix
-    if ";" in lines[x]:
-        suffix = lines[x]
+    if ";" in lines[prefixCounter]:
+        suffix = lines[prefixCounter]
     print(colored("Mutating the name...", "yellow"))
-    newname.insert(x, name + suffix)
-    modified = re.sub("\s", "", newname[x])
+    newname.insert(prefixCounter, name + suffix)
+    modified = re.sub("\s", "", newname[prefixCounter])
     modified = re.sub(re.escape("*"), "", modified)
     modified = re.sub(re.escape(";"), "", modified)
-    respaced.insert(x, re.sub("\n", "", modified))
+    respaced.insert(prefixCounter, re.sub("\n", "", modified))
     print(colored("DONE!", "green"))
     return respaced
 
@@ -163,7 +163,7 @@ def hunt():
     #Start grabbing links from the Database
     for field in CurrentCollection.find({}, {'_id': 0, 'name': 1, 'link': 1, 'type': 1}):
         print(colored("Grabbing one dataset from the database....", "yellow"))
-        z = 0
+        linkIndex = 0
         #If namevariation is wanted
         if w.ui.useNameVar.isChecked():
             #Mutate the name
@@ -181,11 +181,11 @@ def hunt():
             if w.ui.useNameVar.isChecked():
                 #Get all links
                 print(colored("Starting namevariation...", "yellow"))
-                mainlink.insert(z, field["link"].format(mainname[z]))
+                mainlink.insert(linkIndex, field["link"].format(mainname[linkIndex]))
             else:
                 #If no variation only get one link
                 mainlink.clear()
-                mainlink.insert(0, field["link"].format(mainname[z]))
+                mainlink.insert(0, field["link"].format(mainname[linkIndex]))
             json.dumps(field)
             wname = field["name"]
             wtype = field["type"]
@@ -194,7 +194,7 @@ def hunt():
                 #If its not friendly, censor all nsfw results
                 print(colored("Censoring one result... Guess you're at work... Or in China...", "red"))
                 output = output + "--------------------\n" + "\nCENSORED\n"
-                z += 1
+                linkIndex += 1
             #Continue as per usual
             else:
                 #If the request uses onion routing
@@ -204,18 +204,18 @@ def hunt():
                     session = getTorSession.newTorSession()
                     print(colored("Getting anonymous request.... Getting statuscode", "yellow"))
                     #Get the current HTTP status code
-                    req = session.get(mainlink[z]).status_code
+                    req = session.get(mainlink[linkIndex]).status_code
                     print(colored("DONE!", "green"))
                 #If it doesnt use onion routing
                 else:
                     #Get the request without a proxy
                     print(colored("Grabbing new statuscode...", "yellow"))
                     #Get the current HTTP status code
-                    req = requests.get(mainlink[z]).status_code
+                    req = requests.get(mainlink[linkIndex]).status_code
                     print(colored("DONE!", "green"))
                 #Sample the output with the recieved variables
                 print(colored("Collecting new sampled output data...", "yellow"))
-                output = output + "--------------------\n" + "\n" + wname + "\n"+ mainlink[z] + "\n"
+                output = output + "--------------------\n" + "\n" + wname + "\n"+ mainlink[linkIndex] + "\n"
                 print(colored("Translating statuscode....", "yellow"))
                 #Add the current HTTP Status code and translate it to User readable
                 if w.ui.jsonFileRadio.isChecked():
@@ -229,7 +229,7 @@ def hunt():
                     loggingMethod = "NONE"
                 output = status.statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod)
                 w.ui.textEdit.setText(output)
-                z += 1
+                linkIndex += 1
 
 
 #Connect all buttons in the application

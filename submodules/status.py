@@ -35,10 +35,10 @@ d = DBInsertion()
 w = AppWindow()
 
 def statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod):
-    y = 0
+    linkIndex = 0
     #Translate the statuscode
     for i in mainlink:
-        print(colored(mainlink[y], "cyan"))
+        print(colored(mainlink[linkIndex], "cyan"))
         print(colored("Testing....", "yellow"))
         if req == 200:
             output = output + "200 OK!\n"
@@ -57,11 +57,11 @@ def statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod):
             print(colored("Getting new Tor session... Let's go dark... (again)", "magenta"))
             session = getTorSession.newTorSession()
             print(colored("Getting HTML document anonymously....", "yellow"))
-            page = session.get(mainlink[y])
+            page = session.get(mainlink[linkIndex])
             print(colored("DONE!", "green"))
         else:
             print(colored("Getting HTML document...", "yellow"))
-            page = requests.get(mainlink[y])
+            page = requests.get(mainlink[linkIndex])
             print(colored("DONE!", "green"))
         #Look for Data suspicious of a missing profile in the html document
         print(colored("Parsing HTML...", "yellow"))
@@ -103,7 +103,7 @@ def statuscheck(req, output, mainlink, pathToLog, mainname, loggingMethod):
             print(colored("FATAL ERROR! Server might be down...", "red"))
             output = output + "EMPTY TITLE CODE MAYBE DOWN OR BAD HTML?\n"
             hit = "error"
-        y += 1
+        linkIndex += 1
         #Give output to the main Log field
         print(colored("Outputting data....", "yellow"))
         #Write to a textfile if wanted

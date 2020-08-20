@@ -28,11 +28,6 @@ You can find this awesome tool here: https://github.com/sherlock-project/sherloc
 AkumaPy is designed to be easy to use for people in forensics.
 It can ease tracking people just by recieving a username on one platform and hunting it across other sites.
 
-### Why was this created?
-
-AkumaPy was created for a final school project at the [BBS-Betzdorf-Kirchen Technical College](https://www.bbs-betzdorf-kirchen.de "School Homepage").
-It contains multiple areas of programming like Databases, GUI Design and Web-Developement.
-
 ### How do I set it up?
 
 To setup AkumaPy, you must have Tor installed and the SOCKS Port must be configured.
@@ -164,4 +159,3 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 ### Additional Credits
 
 - Maze aka. Black_eks for creating the tools icon. [Instagram](https://instagram.com/borky.exe/)
-- Doelicious for letting me use her username extensively for testing purposes. [Twitter](https://www.twitter.com/Doelici0us/)

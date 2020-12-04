@@ -153,7 +153,3 @@ hit: Something was found = good, Nothing was found = bad, Errors occured = error
 - ~~OS detection so the tool only runs on Linux and as root~~ [Finished]
 - Removing MongoDB dependency and using normal JSON Documents
 
-
-### Additional Credits
-
-- Maze aka. Black_eks for creating the tools icon. [Instagram](https://instagram.com/borky.exe/)

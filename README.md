@@ -1,7 +1,5 @@
 # AkumaPy / Forensic Search
 
-![Main Logo](https://github.com/PanickingLynx/AkumaPy/blob/master/mainicon.png)
-
 ### Table of Contents
 - What is AkumaPy?
 - Is this tool ispired by Sherlock?

@@ -1,5 +1,5 @@
 {
     "DatabaseAdress" : "mongodb://localhost:27017",
-    "DatabaseName" : "AkumaPy",
+    "DatabaseName" : "LookupPy",
     "CollectionName" : "links"
 }

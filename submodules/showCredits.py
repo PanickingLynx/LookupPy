@@ -9,7 +9,7 @@ def showCredits():
     msg.setIconPixmap(QPixmap("./mainicon.png"))
     msg.setText("People who showed me their Support:")
     msg.setWindowTitle("Credits")
-    msg.setInformativeText("- Doelicious (Testing) \n- Maze aka. Black_eks (Script Icon artwork)\n")
+    msg.setInformativeText("- Doelicious (Testing) \n")
     msg.setEscapeButton(msg.Ok)
     retval = msg.exec()
     if retval == msg.Ok:

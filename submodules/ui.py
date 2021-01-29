@@ -103,7 +103,7 @@ class Ui_QMainWindow(object):
 
     def retranslateUi(self, QMainWindow):
         _translate = QtCore.QCoreApplication.translate
-        QMainWindow.setWindowTitle(_translate("QMainWindow", "AkumaPy | Forensic Search"))
+        QMainWindow.setWindowTitle(_translate("QMainWindow", "LookupPy | Forensic Search"))
         self.label_4.setText(_translate("QMainWindow", "Log:"))
         self.textEdit.setToolTip(_translate("QMainWindow", "Default log goes here"))
         self.label_5.setText(_translate("QMainWindow", "Path to namevariation wordlist:"))

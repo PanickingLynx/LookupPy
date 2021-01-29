@@ -1,9 +1,9 @@
-# AkumaPy / Forensic Search
+# LookupPy / Forensic Search
 
 ### Table of Contents
-- What is AkumaPy?
+- What is LookupPy?
 - Is this tool ispired by Sherlock?
-- Why would you want to use AkumaPy?
+- Why would you want to use LookupPy?
 - Why was this created?
 - How do I set it up?
 - The mongoconfig.json file.
@@ -12,23 +12,23 @@
 - Which Modules were used?
 - Features and planned features.
 
-### What is AkumaPy?
+### What is LookupPy?
 
-AkumaPy is a forensic search tool, designed to find people via username across multiple Social Networks and other sites.
+LookupPy is a forensic search tool, designed to find people via username across multiple Social Networks and other sites.
 
 ### Is this tool inspired by Sherlock?
 
 Yes, most definitely. Sherlock is one of the tools that made me get into developing OSINT tools and I am really thankful for it.
 You can find this awesome tool here: https://github.com/sherlock-project/sherlock
 
-### Why would you want to use AkumaPy?
+### Why would you want to use LookupPy?
 
-AkumaPy is designed to be easy to use for people in forensics.
+LookupPy is designed to be easy to use for people in forensics.
 It can ease tracking people just by recieving a username on one platform and hunting it across other sites.
 
 ### How do I set it up?
 
-To setup AkumaPy, you must have Tor installed and the SOCKS Port must be configured.
+To setup LookupPy, you must have Tor installed and the SOCKS Port must be configured.
 You can do this like so:
 ```
 sudo apt install tor
@@ -57,7 +57,7 @@ Next run (as root):
 sudo service tor restart
 cd /where_you_saved_the_tool/
 sudo pip3 install -r ./requirements.txt
-sudo python3 ./akuma.py
+sudo python3 ./Lookup.py
 ```
 Then you are done.
 Warning! The Tool will only work under Linux and with sudo! (For some reason there are errors when run directly from root)
@@ -98,7 +98,7 @@ The file looks as follows:
 ``` 
 {
     "DatabaseAdress" : "mongodb://localhost:27017",
-    "DatabaseName" : "AkumaPy",
+    "DatabaseName" : "LookupPy",
     "CollectionName" : "links"
 }
 ```

@@ -47,7 +47,7 @@ Now we will install the MongoDB Server.
 Get it from [mongodb.com](https://www.mongodb.com/ "MongoDB")
 Find the server and run (as root):
 ```
-sudo dpkg -i ./the_downloaded_deb
+sudo apt install ./the_downloaded_deb
 sudo service mongod start
 ```
 If there are errors restart your machine.

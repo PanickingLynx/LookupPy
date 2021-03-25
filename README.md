@@ -1,3 +1,6 @@
+# THIS PROJECT IS ABANDONED
+_Since I am lacking the time to keep developing._
+
 # LookupPy / Forensic Search
 
 ### Table of Contents
